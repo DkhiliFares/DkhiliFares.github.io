@@ -6,10 +6,26 @@ import { loadContent,validateContent,root } from '../scripts/validate-content.mj
 import { build } from '../scripts/build.mjs';
 import { matchesProject } from '../src/scripts/filters.js';
 const original=await loadContent();
-test('content is valid, source-backed and covers all 26 audited repositories',async()=>{
- await validateContent(original);const audit=JSON.parse(await readFile(path.join(root,'docs/repository-inventory.json'),'utf8'));
- assert.equal(audit.actualPublicCount,26);for(const repo of audit.repositories){assert(original.projects.find(p=>p.repository===repo.url));assert(repo.audit.treeRead);assert(repo.audit.readmeRead||repo.audit.readmeAbsent);}
- assert.equal(original.experience.length,3);assert.equal(original.education[0].major,'Computer Engineering');
+test('public content covers repository projects with repository-backed evidence',async()=>{
+ await validateContent(original);
+ const publishedProjects=original.projects.filter(project=>project.visibility==='published');
+ assert.equal(publishedProjects.length,25);
+ assert.equal(publishedProjects.filter(project=>project.caseStudy).length,12);
+ assert.equal(new Set(publishedProjects.map(project=>project.repository)).size,publishedProjects.length);
+ for(const project of publishedProjects){
+  assert(project.evidence.includes(project.repository),`${project.id}: repository URL missing from evidence`);
+  assert(project.evidence.every(reference=>reference.startsWith(project.repository)),`${project.id}: evidence points outside its repository`);
+ }
+ const publishedProjectIds=new Set(publishedProjects.map(project=>project.id));
+ const experienceIds=new Set(original.experience.map(item=>item.id));
+ const projectReferences=original.skills.flatMap(skill=>skill.projects||[]);
+ const experienceReferences=original.skills.flatMap(skill=>skill.experience||[]);
+ assert(projectReferences.length>0);
+ assert(experienceReferences.length>0);
+ for(const id of projectReferences)assert(publishedProjectIds.has(id),`Skill references unpublished or missing project ${id}`);
+ for(const id of experienceReferences)assert(experienceIds.has(id),`Skill references missing experience ${id}`);
+ assert.equal(original.experience.length,3);
+ assert.equal(original.education[0].major,'Computer Engineering');
 });
 test('public content excludes private contact fields and editorial evidence',()=>{
  assert.equal(Object.hasOwn(original.profile,'email'),false);
