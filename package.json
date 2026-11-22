@@ -1,0 +1,17 @@
+{
+  "name": "fares-dkhili-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "validate": "node scripts/validate-content.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "dev": "node scripts/build.mjs && node scripts/serve.mjs",
+    "preview": "node scripts/serve.mjs"
+    ,"studio": "node scripts/studio.mjs",
+    "dashboard:build": "npm --prefix owner-dashboard run build",
+    "privacy-check": "node scripts/privacy-check.mjs"
+  }
+}

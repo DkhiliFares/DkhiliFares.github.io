@@ -1,0 +1,686 @@
+[
+  {
+    "id": "embedded-1",
+    "title": "C / Embedded C",
+    "category": "embedded",
+    "evidenceType": "internship",
+    "projects": [
+      "gprs-driver"
+    ],
+    "experience": [
+      "st-2025"
+    ],
+    "evidenceNote": "Supported by the CV’s internship description."
+  },
+  {
+    "id": "embedded-2",
+    "title": "STM32 & ARM Cortex-M",
+    "category": "embedded",
+    "evidenceType": "internship",
+    "projects": [
+      "gprs-driver"
+    ],
+    "experience": [
+      "st-2025"
+    ],
+    "evidenceNote": "Supported by the CV’s internship description."
+  },
+  {
+    "id": "embedded-3",
+    "title": "STM32CubeIDE / CubeMX",
+    "category": "embedded",
+    "evidenceType": "internship",
+    "projects": [
+      "gprs-driver"
+    ],
+    "experience": [
+      "st-2025",
+      "st-2026"
+    ],
+    "evidenceNote": "Supported by the CV’s internship description."
+  },
+  {
+    "id": "embedded-4",
+    "title": "HAL & UART",
+    "category": "embedded",
+    "evidenceType": "project",
+    "projects": [
+      "gprs-driver"
+    ],
+    "experience": [],
+    "evidenceNote": "Supported by project code or documented integration; project limitations still apply."
+  },
+  {
+    "id": "embedded-5",
+    "title": "FreeRTOS",
+    "category": "embedded",
+    "evidenceType": "cv",
+    "projects": [],
+    "experience": [
+      "st-2026"
+    ],
+    "evidenceNote": "Listed in the CV; repository links show related material where available."
+  },
+  {
+    "id": "embedded-6",
+    "title": "SPI / I²C / CAN",
+    "category": "embedded",
+    "evidenceType": "cv",
+    "projects": [],
+    "experience": [],
+    "evidenceNote": "Listed in the CV; repository links show related material where available."
+  },
+  {
+    "id": "embedded-7",
+    "title": "IAR Embedded Workbench",
+    "category": "embedded",
+    "evidenceType": "internship",
+    "projects": [],
+    "experience": [
+      "st-2025"
+    ],
+    "evidenceNote": "Supported by the CV’s internship description."
+  },
+  {
+    "id": "embedded-8",
+    "title": "Bare-metal development",
+    "category": "embedded",
+    "evidenceType": "internship",
+    "projects": [
+      "gprs-driver"
+    ],
+    "experience": [
+      "st-2025"
+    ],
+    "evidenceNote": "Supported by the CV’s internship description."
+  },
+  {
+    "id": "linux-1",
+    "title": "Embedded Linux",
+    "category": "linux",
+    "evidenceType": "internship",
+    "projects": [
+      "embedded-linux-cross-compilation"
+    ],
+    "experience": [
+      "vicom-2024"
+    ],
+    "evidenceNote": "Supported by the CV’s internship description."
+  },
+  {
+    "id": "linux-2",
+    "title": "Cross-compilation",
+    "category": "linux",
+    "evidenceType": "internship",
+    "projects": [
+      "embedded-linux-cross-compilation"
+    ],
+    "experience": [
+      "vicom-2024"
+    ],
+    "evidenceNote": "Supported by the CV’s internship description."
+  },
+  {
+    "id": "linux-3",
+    "title": "Linux system programming",
+    "category": "linux",
+    "evidenceType": "academic",
+    "projects": [
+      "embedded-linux-cross-compilation"
+    ],
+    "experience": [],
+    "evidenceNote": "Supported by source or documentation in an academic exercise."
+  },
+  {
+    "id": "linux-4",
+    "title": "Buildroot",
+    "category": "linux",
+    "evidenceType": "academic",
+    "projects": [
+      "embedded-linux-cross-compilation"
+    ],
+    "experience": [],
+    "evidenceNote": "Supported by source or documentation in an academic exercise."
+  },
+  {
+    "id": "linux-5",
+    "title": "QEMU / Crosstool-NG",
+    "category": "linux",
+    "evidenceType": "academic",
+    "projects": [
+      "embedded-linux-cross-compilation"
+    ],
+    "experience": [],
+    "evidenceNote": "Supported by source or documentation in an academic exercise."
+  },
+  {
+    "id": "linux-6",
+    "title": "Bash / SSH / Ubuntu",
+    "category": "linux",
+    "evidenceType": "project",
+    "projects": [
+      "azurelorahub"
+    ],
+    "experience": [
+      "vicom-2024"
+    ],
+    "evidenceNote": "Supported by project code or documented integration; project limitations still apply."
+  },
+  {
+    "id": "linux-7",
+    "title": "CMake / build systems",
+    "category": "linux",
+    "evidenceType": "project",
+    "projects": [
+      "raspberry-pi-monitoring"
+    ],
+    "experience": [
+      "vicom-2024"
+    ],
+    "evidenceNote": "Supported by project code or documented integration; project limitations still apply."
+  },
+  {
+    "id": "linux-8",
+    "title": "Linux / POSIX adaptation",
+    "category": "linux",
+    "evidenceType": "internship",
+    "projects": [],
+    "experience": [
+      "st-2025"
+    ],
+    "evidenceNote": "Supported by the CV’s internship description."
+  },
+  {
+    "id": "networks-1",
+    "title": "TCP / UDP sockets",
+    "category": "networks",
+    "evidenceType": "academic",
+    "projects": [
+      "exemple-client-serveur-tcp-udp",
+      "socket"
+    ],
+    "experience": [],
+    "evidenceNote": "Supported by source or documentation in an academic exercise."
+  },
+  {
+    "id": "networks-2",
+    "title": "VLANs / routing / subnetting",
+    "category": "networks",
+    "evidenceType": "cv",
+    "projects": [
+      "network-administration-project"
+    ],
+    "experience": [],
+    "evidenceNote": "Listed in the CV; repository links show related material where available."
+  },
+  {
+    "id": "networks-3",
+    "title": "Cisco CLI / EVE-NG",
+    "category": "networks",
+    "evidenceType": "cv",
+    "projects": [
+      "network-administration-project"
+    ],
+    "experience": [],
+    "evidenceNote": "Listed in the CV; repository links show related material where available."
+  },
+  {
+    "id": "networks-4",
+    "title": "Zabbix / Akvorado",
+    "category": "networks",
+    "evidenceType": "cv",
+    "projects": [
+      "network-administration-project"
+    ],
+    "experience": [],
+    "evidenceNote": "Listed in the CV; repository links show related material where available."
+  },
+  {
+    "id": "networks-5",
+    "title": "NetFlow / IPFIX / sFlow",
+    "category": "networks",
+    "evidenceType": "cv",
+    "projects": [
+      "network-administration-project"
+    ],
+    "experience": [],
+    "evidenceNote": "Listed in the CV; repository links show related material where available."
+  },
+  {
+    "id": "networks-6",
+    "title": "Wireshark / ACLs",
+    "category": "networks",
+    "evidenceType": "cv",
+    "projects": [],
+    "experience": [],
+    "evidenceNote": "Listed in the CV; repository links show related material where available."
+  },
+  {
+    "id": "networks-7",
+    "title": "gRPC / Protocol Buffers",
+    "category": "networks",
+    "evidenceType": "academic",
+    "projects": [
+      "mini-projet-sys-reparti",
+      "grpc"
+    ],
+    "experience": [],
+    "evidenceNote": "Supported by source or documentation in an academic exercise."
+  },
+  {
+    "id": "networks-8",
+    "title": "Java RMI",
+    "category": "networks",
+    "evidenceType": "academic",
+    "projects": [
+      "rmi",
+      "mini-projet-sys-reparti"
+    ],
+    "experience": [],
+    "evidenceNote": "Supported by source or documentation in an academic exercise."
+  },
+  {
+    "id": "iot-1",
+    "title": "Raspberry Pi",
+    "category": "iot",
+    "evidenceType": "project",
+    "projects": [
+      "secureaccess",
+      "raspberry-pi-monitoring"
+    ],
+    "experience": [
+      "vicom-2024"
+    ],
+    "evidenceNote": "Supported by project code or documented integration; project limitations still apply."
+  },
+  {
+    "id": "iot-2",
+    "title": "ESP32 / DHT22",
+    "category": "iot",
+    "evidenceType": "academic",
+    "projects": [
+      "dht11-montoring-with-thingspeak"
+    ],
+    "experience": [],
+    "evidenceNote": "Supported by source or documentation in an academic exercise."
+  },
+  {
+    "id": "iot-3",
+    "title": "ESP8266 / DHT11 / MQ2",
+    "category": "iot",
+    "evidenceType": "project",
+    "projects": [
+      "firedetection-esp32"
+    ],
+    "experience": [],
+    "evidenceNote": "Supported by project code or documented integration; project limitations still apply."
+  },
+  {
+    "id": "iot-4",
+    "title": "LoRaWAN / OTAA",
+    "category": "iot",
+    "evidenceType": "project",
+    "projects": [
+      "azurelorahub"
+    ],
+    "experience": [],
+    "evidenceNote": "Supported by project code or documented integration; project limitations still apply."
+  },
+  {
+    "id": "iot-5",
+    "title": "MQTT / ChirpStack",
+    "category": "iot",
+    "evidenceType": "project",
+    "projects": [
+      "azurelorahub",
+      "raspberry-pi-monitoring"
+    ],
+    "experience": [],
+    "evidenceNote": "Supported by project code or documented integration; project limitations still apply."
+  },
+  {
+    "id": "iot-6",
+    "title": "Arduino / LMIC",
+    "category": "iot",
+    "evidenceType": "project",
+    "projects": [
+      "azurelorahub"
+    ],
+    "experience": [],
+    "evidenceNote": "Supported by project code or documented integration; project limitations still apply."
+  },
+  {
+    "id": "iot-7",
+    "title": "HTTP / AT commands",
+    "category": "iot",
+    "evidenceType": "project",
+    "projects": [
+      "gprs-driver"
+    ],
+    "experience": [],
+    "evidenceNote": "Supported by project code or documented integration; project limitations still apply."
+  },
+  {
+    "id": "iot-8",
+    "title": "InfluxDB interface",
+    "category": "iot",
+    "evidenceType": "project",
+    "projects": [
+      "raspberry-pi-monitoring"
+    ],
+    "experience": [],
+    "evidenceNote": "Supported by project code or documented integration; project limitations still apply."
+  },
+  {
+    "id": "hardware-1",
+    "title": "FPGA integration",
+    "category": "hardware",
+    "evidenceType": "academic",
+    "projects": [
+      "ledgame-sopc-with-fpga"
+    ],
+    "experience": [],
+    "evidenceNote": "Supported by source or documentation in an academic exercise."
+  },
+  {
+    "id": "hardware-2",
+    "title": "Nios II",
+    "category": "hardware",
+    "evidenceType": "academic",
+    "projects": [
+      "ledgame-sopc-with-fpga",
+      "from0to99counter-sopc-with-fpga"
+    ],
+    "experience": [],
+    "evidenceNote": "Supported by source or documentation in an academic exercise."
+  },
+  {
+    "id": "hardware-3",
+    "title": "VHDL",
+    "category": "hardware",
+    "evidenceType": "academic",
+    "projects": [
+      "ledgame-sopc-with-fpga"
+    ],
+    "experience": [],
+    "evidenceNote": "Supported by source or documentation in an academic exercise."
+  },
+  {
+    "id": "hardware-4",
+    "title": "Qsys / Platform Designer",
+    "category": "hardware",
+    "evidenceType": "academic",
+    "projects": [
+      "ledgame-sopc-with-fpga"
+    ],
+    "experience": [],
+    "evidenceNote": "Supported by source or documentation in an academic exercise."
+  },
+  {
+    "id": "hardware-5",
+    "title": "PIO / hardware-software interfaces",
+    "category": "hardware",
+    "evidenceType": "academic",
+    "projects": [
+      "from0to99counter-sopc-with-fpga"
+    ],
+    "experience": [],
+    "evidenceNote": "Supported by source or documentation in an academic exercise."
+  },
+  {
+    "id": "software-1",
+    "title": "C++ / Qt",
+    "category": "software",
+    "evidenceType": "internship",
+    "projects": [
+      "raspberry-pi-monitoring"
+    ],
+    "experience": [
+      "vicom-2024"
+    ],
+    "evidenceNote": "Supported by the CV’s internship description."
+  },
+  {
+    "id": "software-2",
+    "title": "Python",
+    "category": "software",
+    "evidenceType": "project",
+    "projects": [
+      "secureaccess",
+      "big-data-energy-monitoring"
+    ],
+    "experience": [],
+    "evidenceNote": "Supported by project code or documented integration; project limitations still apply."
+  },
+  {
+    "id": "software-3",
+    "title": "Java / Swing",
+    "category": "software",
+    "evidenceType": "academic",
+    "projects": [
+      "codage-d-codage-des-fichiers-textes"
+    ],
+    "experience": [],
+    "evidenceNote": "Supported by source or documentation in an academic exercise."
+  },
+  {
+    "id": "software-4",
+    "title": "Spring Boot / REST",
+    "category": "software",
+    "evidenceType": "academic",
+    "projects": [
+      "eventsproject",
+      "school"
+    ],
+    "experience": [],
+    "evidenceNote": "Supported by source or documentation in an academic exercise."
+  },
+  {
+    "id": "software-5",
+    "title": "Flask",
+    "category": "software",
+    "evidenceType": "project",
+    "projects": [
+      "secureaccess"
+    ],
+    "experience": [],
+    "evidenceNote": "Supported by project code or documented integration; project limitations still apply."
+  },
+  {
+    "id": "software-6",
+    "title": "HTML / CSS / JavaScript",
+    "category": "software",
+    "evidenceType": "project",
+    "projects": [
+      "secureaccess",
+      "cloud-3tiers-architecture"
+    ],
+    "experience": [],
+    "evidenceNote": "Supported by project code or documented integration; project limitations still apply."
+  },
+  {
+    "id": "software-7",
+    "title": "Git / GitHub",
+    "category": "software",
+    "evidenceType": "project",
+    "projects": [
+      "gprs-driver",
+      "secureaccess"
+    ],
+    "experience": [],
+    "evidenceNote": "Supported by project code or documented integration; project limitations still apply."
+  },
+  {
+    "id": "software-8",
+    "title": "OpenMP",
+    "category": "software",
+    "evidenceType": "academic",
+    "projects": [
+      "matrixproductopenmp"
+    ],
+    "experience": [],
+    "evidenceNote": "Supported by source or documentation in an academic exercise."
+  },
+  {
+    "id": "software-9",
+    "title": "Jenkins / Docker / CI/CD",
+    "category": "software",
+    "evidenceType": "academic",
+    "projects": [
+      "eventsproject"
+    ],
+    "experience": [],
+    "evidenceNote": "Supported by source or documentation in an academic exercise."
+  },
+  {
+    "id": "cloud-1",
+    "title": "Azure VMs / NSGs",
+    "category": "cloud",
+    "evidenceType": "project",
+    "projects": [
+      "azurelorahub"
+    ],
+    "experience": [],
+    "evidenceNote": "Supported by project code or documented integration; project limitations still apply."
+  },
+  {
+    "id": "cloud-2",
+    "title": "AWS VPC / EC2 / RDS",
+    "category": "cloud",
+    "evidenceType": "academic",
+    "projects": [
+      "cloud-3tiers-architecture"
+    ],
+    "experience": [],
+    "evidenceNote": "Supported by source or documentation in an academic exercise."
+  },
+  {
+    "id": "cloud-3",
+    "title": "Docker Compose",
+    "category": "cloud",
+    "evidenceType": "project",
+    "projects": [
+      "azurelorahub",
+      "big-data-energy-monitoring"
+    ],
+    "experience": [],
+    "evidenceNote": "Supported by project code or documented integration; project limitations still apply."
+  },
+  {
+    "id": "cloud-4",
+    "title": "PostgreSQL / Redis",
+    "category": "cloud",
+    "evidenceType": "project",
+    "projects": [
+      "azurelorahub"
+    ],
+    "experience": [],
+    "evidenceNote": "Supported by project code or documented integration; project limitations still apply."
+  },
+  {
+    "id": "cloud-5",
+    "title": "Kafka / Spark",
+    "category": "cloud",
+    "evidenceType": "academic",
+    "projects": [
+      "big-data-energy-monitoring"
+    ],
+    "experience": [],
+    "evidenceNote": "Supported by source or documentation in an academic exercise."
+  },
+  {
+    "id": "cloud-6",
+    "title": "Hadoop / MapReduce",
+    "category": "cloud",
+    "evidenceType": "academic",
+    "projects": [
+      "projetbigdata"
+    ],
+    "experience": [],
+    "evidenceNote": "Supported by source or documentation in an academic exercise."
+  },
+  {
+    "id": "cloud-7",
+    "title": "SQL",
+    "category": "cloud",
+    "evidenceType": "academic",
+    "projects": [
+      "cloud-3tiers-architecture"
+    ],
+    "experience": [],
+    "evidenceNote": "Supported by source or documentation in an academic exercise."
+  },
+  {
+    "id": "cloud-8",
+    "title": "Power BI",
+    "category": "cloud",
+    "evidenceType": "documented",
+    "projects": [
+      "powerbi-project"
+    ],
+    "experience": [],
+    "evidenceNote": "A Power BI report artifact is present in the repository; the report content and analytical scope were not independently verified."
+  },
+  {
+    "id": "security-ai-1",
+    "title": "OpenCV / face recognition",
+    "category": "security-ai",
+    "evidenceType": "project",
+    "projects": [
+      "secureaccess"
+    ],
+    "experience": [],
+    "evidenceNote": "Supported by project code or documented integration; project limitations still apply."
+  },
+  {
+    "id": "security-ai-2",
+    "title": "AES-CCM encryption",
+    "category": "security-ai",
+    "evidenceType": "project",
+    "projects": [
+      "secureaccess"
+    ],
+    "experience": [],
+    "evidenceNote": "Supported by project code or documented integration; project limitations still apply."
+  },
+  {
+    "id": "security-ai-3",
+    "title": "LLM integration / AI agents",
+    "category": "security-ai",
+    "evidenceType": "internship",
+    "projects": [],
+    "experience": [
+      "st-2026"
+    ],
+    "evidenceNote": "Supported by the CV’s internship description."
+  },
+  {
+    "id": "security-ai-4",
+    "title": "VS Code Copilot workflows",
+    "category": "security-ai",
+    "evidenceType": "internship",
+    "projects": [],
+    "experience": [
+      "st-2026"
+    ],
+    "evidenceNote": "Supported by the CV’s internship description."
+  },
+  {
+    "id": "security-ai-5",
+    "title": "Deep-learning fundamentals",
+    "category": "security-ai",
+    "evidenceType": "training",
+    "projects": [],
+    "experience": [],
+    "evidenceNote": "NVIDIA Fundamentals of Deep Learning, listed in CV."
+  },
+  {
+    "id": "security-ai-6",
+    "title": "CTF cryptography / forensics",
+    "category": "security-ai",
+    "evidenceType": "cv",
+    "projects": [],
+    "experience": [],
+    "evidenceNote": "Listed in the CV; repository links show related material where available."
+  }
+]

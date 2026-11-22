@@ -1,0 +1,26 @@
+[
+  {
+    "id": "cisco-itn",
+    "title": "CCNA: Introduction to Networks",
+    "issuer": "Cisco",
+    "date": "October 2024",
+    "type": "Certificate",
+    "verificationUrl": null
+  },
+  {
+    "id": "nvidia-dl",
+    "title": "Fundamentals of Deep Learning",
+    "issuer": "NVIDIA",
+    "date": "April 2025",
+    "type": "Certificate",
+    "verificationUrl": null
+  },
+  {
+    "id": "st-embedded-c",
+    "title": "Embedded C with STM32F407 MCUs",
+    "issuer": "STMicroelectronics training",
+    "date": null,
+    "type": "Training",
+    "verificationUrl": null
+  }
+]

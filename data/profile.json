@@ -1,0 +1,35 @@
+{
+  "name": "Fares Dkhili",
+  "title": "Computer Engineer",
+  "location": "Tunis, Tunisia",
+  "github": "https://github.com/DkhiliFares",
+  "linkedin": "https://www.linkedin.com/in/fares-dkhili-018b17303/",
+  "intro": "I design, develop and connect systems across embedded technologies, Linux, networking and software.",
+  "about": "I’m interested in what happens between the layers: how firmware speaks to hardware, how an operating system supports an application, and how a device becomes part of a network. My work brings those questions together through practical projects, laboratory studies and engineering internships.",
+  "languages": [
+    {
+      "name": "Arabic",
+      "level": "Native"
+    },
+    {
+      "name": "French",
+      "level": "B2"
+    },
+    {
+      "name": "English",
+      "level": "B2"
+    }
+  ],
+  "affiliations": [
+    {
+      "name": "Securinets FST Tunis",
+      "period": "2024–2025"
+    },
+    {
+      "name": "ATIA FST · AI Club",
+      "period": "2025–2026"
+    }
+  ],
+  "source": "Supplied CV and owner specification",
+  "auditedAt": "2026-11-21"
+}

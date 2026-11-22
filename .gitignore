@@ -1,0 +1,25 @@
+dist/
+.research/
+.tools/
+.qa/
+node_modules/
+*.log
+Fares Dkhili.pdf
+
+# Private project documentation
+/MAGNETIC_PORTFOLIO_SPEC.md
+/docs/github-audit.md
+/docs/redesign-brief.md
+/docs/repository-inventory.json
+/docs/portfolio-1-1-setup.md
+
+# Dashboard build artifacts
+/owner-dashboard/build/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# TypeScript build artifacts
+*.tsbuildinfo

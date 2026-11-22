@@ -1,0 +1,2025 @@
+[
+  {
+    "id": "azurelorahub",
+    "title": "AzureLoRaHub",
+    "repositoryName": "AzureLoRaHub",
+    "repository": "https://github.com/DkhiliFares/AzureLoRaHub",
+    "category": "iot",
+    "kind": "reference",
+    "status": "unverified",
+    "statusLabel": "Documented deployment lab",
+    "visibility": "published",
+    "featured": true,
+    "summary": "Documents Azure VM and local ChirpStack deployment, Dragino gateway configuration and Arduino OTAA onboarding.",
+    "technologies": [
+      "LoRaWAN",
+      "ChirpStack",
+      "Azure",
+      "Ubuntu",
+      "MQTT",
+      "PostgreSQL",
+      "Redis",
+      "Docker",
+      "Arduino",
+      "LMIC"
+    ],
+    "caseStudy": true,
+    "fork": false,
+    "archived": false,
+    "sourceTree": "a91df175d2ecb543117dba7b76798ee80537f786",
+    "defaultBranch": "main",
+    "reviewedAt": "2026-11-21",
+    "evidence": [
+      "https://github.com/DkhiliFares/AzureLoRaHub",
+      "https://github.com/DkhiliFares/AzureLoRaHub/blob/main/README.md",
+      "https://github.com/DkhiliFares/AzureLoRaHub/blob/main/docs/01-azure-vm-setup.md",
+      "https://github.com/DkhiliFares/AzureLoRaHub/blob/main/docs/02-chirpstack-setup.md",
+      "https://github.com/DkhiliFares/AzureLoRaHub/blob/main/docs/04-arduino-lora-node.md"
+    ],
+    "notes": [
+      "Core guides and real gateway/device screenshots are present. Azure IoT Hub, AWS IoT Core and dashboards remain roadmap items; do not claim those integrations."
+    ],
+    "media": [
+      {
+        "src": "images/projects/azurelorahub/architecture.webp",
+        "alt": "Repository architecture diagram showing the documented LoRaWAN path; it is an illustration, not a deployment test.",
+        "caption": "Repository architecture diagram showing the documented LoRaWAN path; it is an illustration, not a deployment test.",
+        "width": 1024,
+        "height": 588,
+        "origin": "repository",
+        "role": "cover",
+        "source": "https://github.com/DkhiliFares/AzureLoRaHub/blob/main/docs/architecture-diagram.png"
+      },
+      {
+        "src": "images/projects/azurelorahub/gateway-traffic.webp",
+        "alt": "ChirpStack gateway traffic view captured in the repository; shown without asserting sustained operation.",
+        "caption": "ChirpStack gateway traffic view captured in the repository; shown without asserting sustained operation.",
+        "width": 837,
+        "height": 720,
+        "origin": "repository",
+        "role": "evidence",
+        "source": "https://github.com/DkhiliFares/AzureLoRaHub/blob/main/screenshots/Chirpstack%20is%20connected%20to%20lorawan%20gw.png"
+      }
+    ],
+    "sections": [
+      {
+        "id": "context",
+        "title": "Problem & context",
+        "paragraphs": [
+          "A LoRaWAN deployment has several distinct boundaries: radio, gateway forwarding, network services and application integration. This lab documents the steps needed to bring those pieces together."
+        ]
+      },
+      {
+        "id": "implementation",
+        "title": "Implementation",
+        "paragraphs": [
+          "The guides cover SSH and Azure network rules, PostgreSQL, Redis, Mosquitto and ChirpStack services. Separate documents describe gateway setup, LMIC-based Arduino nodes and local deployment options."
+        ]
+      },
+      {
+        "id": "challenges",
+        "title": "Engineering decisions & challenges",
+        "paragraphs": [
+          "Radio settings, device credentials and server connectivity must agree across independently configured components. The documentation breaks the work into server, gateway and node stages, with configuration examples and troubleshooting notes."
+        ]
+      },
+      {
+        "id": "results",
+        "title": "Observed evidence",
+        "paragraphs": [
+          "The repository contains the deployment guides and gateway/device screenshots. It provides evidence of documented integration work, without establishing a production service or an independently repeated end-to-end acceptance test."
+        ]
+      },
+      {
+        "id": "limitations",
+        "title": "Limitations & next steps",
+        "paragraphs": [
+          "Azure IoT Hub, AWS IoT Core and application dashboards are roadmap ideas, not verified integrations. No range, availability or power-consumption result is asserted."
+        ]
+      }
+    ],
+    "feature": "Following a message from radio to server.",
+    "diagram": {
+      "nodes": [
+        {
+          "label": "End device",
+          "detail": "Arduino / LoRa shield"
+        },
+        {
+          "label": "Radio gateway",
+          "detail": "Dragino LPS8N"
+        },
+        {
+          "label": "Network services",
+          "detail": "ChirpStack"
+        },
+        {
+          "label": "Application interface",
+          "detail": "MQTT"
+        }
+      ],
+      "caption": "Conceptual architecture drawn from the repository. Connections describe the documented flow; they do not imply a validated deployment."
+    },
+    "objectives": [
+      "Configure a ChirpStack server on an Azure Ubuntu VM or local host.",
+      "Connect a Dragino gateway through the packet-forwarding path.",
+      "Document Arduino node onboarding with OTAA."
+    ],
+    "components": [
+      "Arduino with LoRa shield",
+      "Dragino LPS8N gateway",
+      "ChirpStack, MQTT, PostgreSQL and Redis",
+      "Azure Ubuntu VM / documented local options"
+    ]
+  },
+  {
+    "id": "big-data-energy-monitoring",
+    "title": "Energy data processing lab",
+    "repositoryName": "Big-Data-Energy-Monitoring",
+    "repository": "https://github.com/DkhiliFares/Big-Data-Energy-Monitoring",
+    "category": "cloud",
+    "kind": "project",
+    "status": "unverified",
+    "statusLabel": "Prototype / integration incomplete",
+    "visibility": "published",
+    "featured": false,
+    "summary": "Simulated meter records feed Kafka; Spark demonstrates streaming alerts and CSV batch aggregates; Flask serves a regional dashboard.",
+    "technologies": [
+      "Python",
+      "Kafka",
+      "Spark",
+      "Flask",
+      "Docker",
+      "MongoDB",
+      "HDFS"
+    ],
+    "caseStudy": true,
+    "fork": false,
+    "archived": false,
+    "sourceTree": "2acac9a7368382d15dc174727e549586f498bbf5",
+    "defaultBranch": "main",
+    "reviewedAt": "2026-11-21",
+    "evidence": [
+      "https://github.com/DkhiliFares/Big-Data-Energy-Monitoring",
+      "https://github.com/DkhiliFares/Big-Data-Energy-Monitoring/blob/main/README.md",
+      "https://github.com/DkhiliFares/Big-Data-Energy-Monitoring/blob/main/dashboard/app.py",
+      "https://github.com/DkhiliFares/Big-Data-Energy-Monitoring/blob/main/data/generate_tunisia_data.py",
+      "https://github.com/DkhiliFares/Big-Data-Energy-Monitoring/blob/main/spark/batch_processing.py",
+      "https://github.com/DkhiliFares/Big-Data-Energy-Monitoring/blob/main/spark/producer.py",
+      "https://github.com/DkhiliFares/Big-Data-Energy-Monitoring/blob/main/spark/stream_processing.py"
+    ],
+    "notes": [
+      "The dashboard returns random mock values, its MongoDB connection is commented out, streaming writes to console, and batch persistence is commented out. No real smart-meter deployment or end-to-end storage is verified."
+    ],
+    "media": [
+      {
+        "src": "images/projects/big-data-energy-monitoring/concept.webp",
+        "alt": "Conceptual illustration for Energy data processing lab, showing its engineering theme in cyan and violet field paths.",
+        "caption": "Original conceptual illustration for this case study; it does not depict tested hardware, a real interface or measured results.",
+        "width": 1599,
+        "height": 900,
+        "origin": "conceptual",
+        "role": "cover",
+        "source": null
+      }
+    ],
+    "sections": [
+      {
+        "id": "context",
+        "title": "Problem & context",
+        "paragraphs": [
+          "The repository explores an energy-data pipeline using simulated meter records. It separates ingestion, streaming/batch processing and a dashboard demonstration."
+        ]
+      },
+      {
+        "id": "implementation",
+        "title": "Implementation",
+        "paragraphs": [
+          "Python produces simulated data; Spark scripts handle streaming and CSV batch aggregation. The Flask dashboard currently returns mock random values rather than a connected analytics store."
+        ]
+      },
+      {
+        "id": "challenges",
+        "title": "Engineering decisions & challenges",
+        "paragraphs": [
+          "A collection of pipeline components must be connected before it represents an end-to-end system. The current code illustrates the pieces, while database connections and batch persistence remain commented out."
+        ]
+      },
+      {
+        "id": "results",
+        "title": "Observed evidence",
+        "paragraphs": [
+          "A source-backed pipeline prototype is present. Streaming writes to console and the dashboard is a mock, so no live smart-meter deployment or completed storage pipeline is claimed."
+        ]
+      },
+      {
+        "id": "limitations",
+        "title": "Limitations & next steps",
+        "paragraphs": [
+          "Integration, persistence and a reproducible end-to-end test are still needed. No throughput or production-scale claim is supported."
+        ]
+      }
+    ],
+    "feature": "Energy data processing lab",
+    "diagram": {
+      "nodes": [
+        {
+          "label": "Simulated meters",
+          "detail": "Python generator"
+        },
+        {
+          "label": "Ingestion",
+          "detail": "Kafka"
+        },
+        {
+          "label": "Processing",
+          "detail": "Spark stream / batch"
+        },
+        {
+          "label": "Demonstration",
+          "detail": "Console / mock dashboard"
+        }
+      ],
+      "caption": "Conceptual architecture drawn from the repository. Connections describe the documented flow; they do not imply a validated deployment."
+    },
+    "objectives": [
+      "Generate and publish simulated meter records.",
+      "Explore Kafka ingestion and Spark transformations.",
+      "Demonstrate regional data presentation."
+    ],
+    "components": [
+      "Python simulated data",
+      "Kafka and Docker configuration",
+      "Spark processing scripts",
+      "Flask dashboard; planned storage interfaces"
+    ]
+  },
+  {
+    "id": "cloud-3tiers-architecture",
+    "title": "AWS three-tier architecture study",
+    "repositoryName": "Cloud-3tiers-Architecture",
+    "repository": "https://github.com/DkhiliFares/Cloud-3tiers-Architecture",
+    "category": "cloud",
+    "kind": "project",
+    "status": "unverified",
+    "statusLabel": "Deployment study",
+    "visibility": "published",
+    "featured": false,
+    "summary": "Documents an AWS VPC, subnets, security groups, load balancers, EC2 and RDS alongside an e-commerce frontend and SQL schema.",
+    "technologies": [
+      "AWS",
+      "VPC",
+      "EC2",
+      "RDS",
+      "ALB",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "SQL"
+    ],
+    "caseStudy": true,
+    "fork": false,
+    "archived": false,
+    "sourceTree": "b892f90e94f16c95a402f900ba98413709e2447a",
+    "defaultBranch": "main",
+    "reviewedAt": "2026-11-21",
+    "evidence": [
+      "https://github.com/DkhiliFares/Cloud-3tiers-Architecture",
+      "https://github.com/DkhiliFares/Cloud-3tiers-Architecture/blob/main/README.md",
+      "https://github.com/DkhiliFares/Cloud-3tiers-Architecture/blob/main/AppDescription.md",
+      "https://github.com/DkhiliFares/Cloud-3tiers-Architecture/blob/main/database.sql",
+      "https://github.com/DkhiliFares/Cloud-3tiers-Architecture/blob/main/frontend/js/auth.js",
+      "https://github.com/DkhiliFares/Cloud-3tiers-Architecture/blob/main/todo.md",
+      "https://github.com/DkhiliFares/Cloud-3tiers-Architecture/blob/main/todo2.md"
+    ],
+    "notes": [
+      "README uses alternative framework names rather than a verified stack; checked-in frontend is plain HTML/CSS/JavaScript. Backend ZIP archives and todo lists require further review; do not claim all cloud services were deployed or production availability."
+    ],
+    "media": [
+      {
+        "src": "images/projects/cloud-3tiers-architecture/concept.webp",
+        "alt": "Conceptual illustration for AWS three-tier architecture study, showing its engineering theme in cyan and violet field paths.",
+        "caption": "Original conceptual illustration for this case study; it does not depict tested hardware, a real interface or measured results.",
+        "width": 1599,
+        "height": 900,
+        "origin": "conceptual",
+        "role": "cover",
+        "source": null
+      }
+    ],
+    "sections": [
+      {
+        "id": "context",
+        "title": "Problem & context",
+        "paragraphs": [
+          "This deployment study documents a three-tier AWS design and includes an e-commerce frontend and SQL schema. It focuses on separating network and application responsibilities."
+        ]
+      },
+      {
+        "id": "implementation",
+        "title": "Implementation",
+        "paragraphs": [
+          "The README walks through AWS networking and service setup with console screenshots. Checked-in frontend files use HTML, CSS and JavaScript; SQL defines the data model. Other backend artifacts and todo lists need further review."
+        ]
+      },
+      {
+        "id": "challenges",
+        "title": "Engineering decisions & challenges",
+        "paragraphs": [
+          "A cloud design must make the allowed traffic between tiers explicit. The guide uses security-group relationships to describe those boundaries, while the implementation status of every planned service is not established."
+        ]
+      },
+      {
+        "id": "results",
+        "title": "Observed evidence",
+        "paragraphs": [
+          "The source supports an architecture and deployment study. It does not prove continuous availability, complete backend integration or deployment of every service named in the README."
+        ]
+      },
+      {
+        "id": "limitations",
+        "title": "Limitations & next steps",
+        "paragraphs": [
+          "Framework alternatives in the README are not proof of a React/Angular implementation. Backend archives and remaining tasks require additional validation."
+        ]
+      }
+    ],
+    "feature": "AWS three-tier architecture study",
+    "diagram": {
+      "nodes": [
+        {
+          "label": "Public entry",
+          "detail": "Load balancer"
+        },
+        {
+          "label": "Frontend tier",
+          "detail": "EC2"
+        },
+        {
+          "label": "Backend tier",
+          "detail": "EC2"
+        },
+        {
+          "label": "Data tier",
+          "detail": "RDS / SQL schema"
+        }
+      ],
+      "caption": "Conceptual architecture drawn from the repository. Connections describe the documented flow; they do not imply a validated deployment."
+    },
+    "objectives": [
+      "Document VPC and subnet organization.",
+      "Define access boundaries between frontend, backend and database.",
+      "Explore load balancing and database deployment."
+    ],
+    "components": [
+      "AWS VPC, EC2, ALB and RDS study",
+      "HTML, CSS and JavaScript frontend",
+      "SQL database schema",
+      "Deployment instructions and screenshots"
+    ]
+  },
+  {
+    "id": "codage-d-codage-des-fichiers-textes",
+    "title": "Text encoding workbench",
+    "repositoryName": "Codage-D-codage-des-fichiers-textes",
+    "repository": "https://github.com/DkhiliFares/Codage-D-codage-des-fichiers-textes",
+    "category": "software",
+    "kind": "project",
+    "status": "unverified",
+    "statusLabel": "Academic implementation",
+    "visibility": "published",
+    "featured": false,
+    "summary": "Java Swing application implements Huffman, Shannon-Fano and run-length encoding with text/file workflows and calculated compression statistics.",
+    "technologies": [
+      "Java",
+      "Swing",
+      "Maven",
+      "Huffman",
+      "Shannon-Fano",
+      "Run-length encoding"
+    ],
+    "caseStudy": true,
+    "fork": false,
+    "archived": false,
+    "sourceTree": "2e7e34a7c47585d691211605173f741ce0910243",
+    "defaultBranch": "main",
+    "reviewedAt": "2026-11-21",
+    "evidence": [
+      "https://github.com/DkhiliFares/Codage-D-codage-des-fichiers-textes",
+      "https://github.com/DkhiliFares/Codage-D-codage-des-fichiers-textes/blob/main/README.md",
+      "https://github.com/DkhiliFares/Codage-D-codage-des-fichiers-textes/blob/main/code_decode/src/main/java/codage/FanoShanon.java",
+      "https://github.com/DkhiliFares/Codage-D-codage-des-fichiers-textes/blob/main/code_decode/src/main/java/codage/FileOperationWindow.java",
+      "https://github.com/DkhiliFares/Codage-D-codage-des-fichiers-textes/blob/main/code_decode/src/main/java/codage/Huffman.java",
+      "https://github.com/DkhiliFares/Codage-D-codage-des-fichiers-textes/blob/main/code_decode/src/main/java/codage/MainWindow.java",
+      "https://github.com/DkhiliFares/Codage-D-codage-des-fichiers-textes/blob/main/code_decode/src/main/java/codage/RunLengthEncoding.java"
+    ],
+    "notes": [
+      "Algorithms and UI classes are present. No reproducible automated round-trip suite was found or run; do not publish measured compression advantages or production-readiness claims."
+    ],
+    "media": [
+      {
+        "src": "images/projects/codage-d-codage-des-fichiers-textes/concept.webp",
+        "alt": "Conceptual illustration for Text encoding workbench, showing its engineering theme in cyan and violet field paths.",
+        "caption": "Original conceptual illustration for this case study; it does not depict tested hardware, a real interface or measured results.",
+        "width": 1599,
+        "height": 900,
+        "origin": "conceptual",
+        "role": "cover",
+        "source": null
+      }
+    ],
+    "sections": [
+      {
+        "id": "context",
+        "title": "Problem & context",
+        "paragraphs": [
+          "An academic desktop application makes three text-coding approaches accessible through one interface. It connects algorithm implementation with text/file handling and calculated statistics."
+        ]
+      },
+      {
+        "id": "implementation",
+        "title": "Implementation",
+        "paragraphs": [
+          "Separate algorithm classes sit behind MainWindow and FileOperationWindow. The UI selects an algorithm, passes input to the appropriate class and displays the output with size-related calculations."
+        ]
+      },
+      {
+        "id": "challenges",
+        "title": "Engineering decisions & challenges",
+        "paragraphs": [
+          "Algorithm behavior and interface state need to remain separate. The class structure separates coding logic from Swing windows; robust round-trip coverage, edge cases and file interoperability still need systematic verification."
+        ]
+      },
+      {
+        "id": "results",
+        "title": "Observed evidence",
+        "paragraphs": [
+          "Source classes for all three algorithms and the interface are present. The displayed ratios are program calculations, not portfolio performance claims."
+        ]
+      },
+      {
+        "id": "limitations",
+        "title": "Limitations & next steps",
+        "paragraphs": [
+          "No automated round-trip suite was run. Compression effectiveness depends on input and representation; no universal speed or size advantage is claimed."
+        ]
+      }
+    ],
+    "feature": "Text encoding workbench",
+    "diagram": {
+      "nodes": [
+        {
+          "label": "Text / file input",
+          "detail": "Java Swing"
+        },
+        {
+          "label": "Algorithm choice",
+          "detail": "Huffman · RLE · Fano"
+        },
+        {
+          "label": "Encoding / decoding",
+          "detail": "Java classes"
+        },
+        {
+          "label": "Output & statistics",
+          "detail": "Text · calculated ratio"
+        }
+      ],
+      "caption": "Conceptual architecture drawn from the repository. Connections describe the documented flow; they do not imply a validated deployment."
+    },
+    "objectives": [
+      "Implement Huffman, run-length and Shannon-Fano coding.",
+      "Offer text and file workflows through Swing.",
+      "Display lengths and calculated compression ratios."
+    ],
+    "components": [
+      "Java",
+      "Swing interface",
+      "Huffman, RunLengthEncoding and FanoShanon classes",
+      "Text/file operations"
+    ]
+  },
+  {
+    "id": "dht11-montoring-with-thingspeak",
+    "title": "ESP32 environmental telemetry",
+    "repositoryName": "DHT11-Montoring-with-ThingSpeak",
+    "repository": "https://github.com/DkhiliFares/DHT11-Montoring-with-ThingSpeak",
+    "category": "iot",
+    "kind": "exercise",
+    "status": "unverified",
+    "statusLabel": "Learning exercise",
+    "visibility": "published",
+    "featured": false,
+    "summary": "Arduino sketch reads a DHT22 on ESP32 and sends temperature and humidity to ThingSpeak over HTTP.",
+    "technologies": [
+      "ESP32",
+      "DHT22",
+      "Arduino C++",
+      "Wi-Fi",
+      "HTTP",
+      "ThingSpeak",
+      "Wokwi"
+    ],
+    "caseStudy": false,
+    "fork": false,
+    "archived": false,
+    "sourceTree": "b40163b06678457fd0c79d89e14e2c812a0e5429",
+    "defaultBranch": "main",
+    "reviewedAt": "2026-11-21",
+    "evidence": [
+      "https://github.com/DkhiliFares/DHT11-Montoring-with-ThingSpeak",
+      "https://github.com/DkhiliFares/DHT11-Montoring-with-ThingSpeak/blob/main/README.md",
+      "https://github.com/DkhiliFares/DHT11-Montoring-with-ThingSpeak/blob/main/sketch.ino"
+    ],
+    "notes": [
+      "Repository name says DHT11 but active code configures DHT22 on GPIO23. Wokwi guest Wi-Fi appears in source; hardware execution is not independently verified. Review sample service configuration before reuse."
+    ],
+    "media": [
+      {
+        "src": "images/projects/dht11-montoring-with-thingspeak/thingspeak-view.webp",
+        "alt": "ThingSpeak view linked from the repository README; displayed as repository evidence, not a live reading.",
+        "caption": "ThingSpeak view linked from the repository README; displayed as repository evidence, not a live reading.",
+        "width": 1282,
+        "height": 438,
+        "origin": "repository",
+        "role": "cover",
+        "source": "https://github.com/user-attachments/assets/7b4198e8-83b4-4af3-92cb-e79d967cfaf1"
+      }
+    ],
+    "sections": []
+  },
+  {
+    "id": "dkhilifares",
+    "title": "GitHub profile",
+    "repositoryName": "DkhiliFares",
+    "repository": "https://github.com/DkhiliFares/DkhiliFares",
+    "category": "software",
+    "kind": "profile",
+    "status": "unverified",
+    "statusLabel": "Profile",
+    "visibility": "published",
+    "featured": false,
+    "summary": "Profile README introduces engineering interests, links projects and lists Cisco/NVIDIA credentials and CTF third place.",
+    "technologies": [
+      "Markdown"
+    ],
+    "caseStudy": false,
+    "fork": false,
+    "archived": false,
+    "sourceTree": "ffe197b216f1081b708cceb137c77e9e2bdc1f7c",
+    "defaultBranch": "main",
+    "reviewedAt": "2026-11-21",
+    "evidence": [
+      "https://github.com/DkhiliFares/DkhiliFares",
+      "https://github.com/DkhiliFares/DkhiliFares/blob/main/README.md"
+    ],
+    "notes": [
+      "Profile still describes student status; the supplied degree information takes precedence for portfolio identity. Badge icons are not proof of proficiency."
+    ],
+    "media": [],
+    "sections": []
+  },
+  {
+    "id": "dkhilifares-github-io",
+    "title": "Personal engineering portfolio",
+    "repositoryName": "DkhiliFares.github.io",
+    "repository": "https://github.com/DkhiliFares/DkhiliFares.github.io",
+    "category": "software",
+    "kind": "profile",
+    "status": "unverified",
+    "statusLabel": "Scaffold",
+    "visibility": "published",
+    "featured": false,
+    "summary": "README-only repository reserved for the personal engineering portfolio.",
+    "technologies": [
+      "Markdown"
+    ],
+    "caseStudy": false,
+    "fork": false,
+    "archived": false,
+    "sourceTree": "02b99942cda4f2c667a7dcdd8435d550d5f72f9e",
+    "defaultBranch": "main",
+    "reviewedAt": "2026-11-21",
+    "evidence": [
+      "https://github.com/DkhiliFares/DkhiliFares.github.io",
+      "https://github.com/DkhiliFares/DkhiliFares.github.io/blob/main/README.md"
+    ],
+    "notes": [
+      "No website implementation is present in the audited remote branch; do not present as a completed engineering project."
+    ],
+    "media": [],
+    "sections": []
+  },
+  {
+    "id": "embedded-linux-cross-compilation",
+    "title": "Embedded Linux laboratory",
+    "repositoryName": "Embedded-linux-cross-compilation",
+    "repository": "https://github.com/DkhiliFares/Embedded-linux-cross-compilation",
+    "category": "linux",
+    "kind": "exercise",
+    "status": "unverified",
+    "statusLabel": "Documented learning exercises",
+    "visibility": "published",
+    "featured": true,
+    "summary": "Five practical guides cover ARM cross-compilation, a Raspberry Pi toolchain, a custom syscall, a kernel module and a BeagleBone Black Buildroot system.",
+    "technologies": [
+      "Linux",
+      "C",
+      "Bash",
+      "QEMU",
+      "ARM",
+      "Crosstool-NG",
+      "Buildroot",
+      "Kernel modules"
+    ],
+    "caseStudy": true,
+    "fork": false,
+    "archived": false,
+    "sourceTree": "fef38aa352a14b9e4fe2d4f39c1c9edec9e8c928",
+    "defaultBranch": "master",
+    "reviewedAt": "2026-11-21",
+    "evidence": [
+      "https://github.com/DkhiliFares/Embedded-linux-cross-compilation",
+      "https://github.com/DkhiliFares/Embedded-linux-cross-compilation/blob/master/README.md",
+      "https://github.com/DkhiliFares/Embedded-linux-cross-compilation/blob/master/Task1.md",
+      "https://github.com/DkhiliFares/Embedded-linux-cross-compilation/blob/master/Task2.md",
+      "https://github.com/DkhiliFares/Embedded-linux-cross-compilation/blob/master/Task3.md",
+      "https://github.com/DkhiliFares/Embedded-linux-cross-compilation/blob/master/Task4.md",
+      "https://github.com/DkhiliFares/Embedded-linux-cross-compilation/blob/master/Task5.md"
+    ],
+    "notes": [
+      "Documentation includes real terminal/build screenshots and commands. These are learning exercises, not a production BSP. No target-performance claims are supported."
+    ],
+    "media": [
+      {
+        "src": "images/projects/embedded-linux-cross-compilation/buildroot-output.webp",
+        "alt": "Repository terminal screenshot showing generated Buildroot output files.",
+        "caption": "Repository terminal screenshot showing generated Buildroot output files.",
+        "width": 882,
+        "height": 651,
+        "origin": "repository",
+        "role": "cover",
+        "source": "https://github.com/DkhiliFares/Embedded-linux-cross-compilation/blob/master/images/image5-1.png"
+      }
+    ],
+    "sections": [
+      {
+        "id": "context",
+        "title": "Problem & context",
+        "paragraphs": [
+          "Five laboratory guides trace the path from compiling a program for another architecture to assembling a minimal embedded Linux system. They make the build host, target architecture and kernel boundary explicit."
+        ]
+      },
+      {
+        "id": "implementation",
+        "title": "Implementation",
+        "paragraphs": [
+          "Task1 and Task2 cover cross-compilation and toolchain configuration. Task3 documents a custom system call; Task4 follows a kernel module through compilation and loading. Task5 documents a minimal Buildroot setup for BeagleBone Black."
+        ]
+      },
+      {
+        "id": "challenges",
+        "title": "Engineering decisions & challenges",
+        "paragraphs": [
+          "A host binary, target binary and kernel module have different build requirements. The task sequence separates those concerns and documents configuration and terminal steps so each layer can be studied on its own."
+        ]
+      },
+      {
+        "id": "results",
+        "title": "Observed evidence",
+        "paragraphs": [
+          "The repository contains commands, explanations and real terminal/build screenshots across the five tasks. These are documented learning exercises, with no claimed production board-support package or measured target performance."
+        ]
+      },
+      {
+        "id": "limitations",
+        "title": "Limitations & next steps",
+        "paragraphs": [
+          "Kernel and toolchain versions require attention when reproducing the guides. The portfolio has reviewed the documentation, not rebuilt each target image or revalidated hardware behavior."
+        ]
+      }
+    ],
+    "feature": "Understanding the system beneath the application.",
+    "diagram": {
+      "nodes": [
+        {
+          "label": "Host toolchain",
+          "detail": "GCC · Crosstool-NG"
+        },
+        {
+          "label": "Target execution",
+          "detail": "ARM · QEMU"
+        },
+        {
+          "label": "Kernel interfaces",
+          "detail": "Syscall · module"
+        },
+        {
+          "label": "System image",
+          "detail": "Buildroot"
+        }
+      ],
+      "caption": "Conceptual architecture drawn from the repository. Connections describe the documented flow; they do not imply a validated deployment.",
+      "title": "Learning progression"
+    },
+    "objectives": [
+      "Set up an ARM cross-compiler and QEMU workflow.",
+      "Build a Raspberry Pi 3 toolchain with Crosstool-NG.",
+      "Explore a custom syscall, a kernel module and a Buildroot system."
+    ],
+    "components": [
+      "Linux host and ARM toolchains",
+      "QEMU emulator",
+      "Raspberry Pi 3 toolchain target",
+      "BeagleBone Black / Buildroot exercise"
+    ]
+  },
+  {
+    "id": "eventsproject",
+    "title": "Event service & delivery pipeline",
+    "repositoryName": "eventsProject",
+    "repository": "https://github.com/DkhiliFares/eventsProject",
+    "category": "software",
+    "kind": "project",
+    "status": "unverified",
+    "statusLabel": "Academic implementation",
+    "visibility": "published",
+    "featured": false,
+    "summary": "Spring Boot APIs manage events, participants and logistics; Jenkins and Docker files define build, test, analysis and delivery stages.",
+    "technologies": [
+      "Java",
+      "Spring Boot",
+      "Maven",
+      "JPA",
+      "JUnit",
+      "Mockito",
+      "Jenkins",
+      "Docker",
+      "SonarQube",
+      "Prometheus"
+    ],
+    "caseStudy": true,
+    "fork": false,
+    "archived": false,
+    "sourceTree": "79bbb0e6522ec41b1932a1aa887a9ad62359dfc0",
+    "defaultBranch": "main",
+    "reviewedAt": "2026-11-21",
+    "evidence": [
+      "https://github.com/DkhiliFares/eventsProject",
+      "https://github.com/DkhiliFares/eventsProject/blob/main/Guide%20Complet%20du%20Projet%20DevOps%20_%20Cha%C3%AEne%20CI_CD%20pour%20Application%20Spring%20Boot.md",
+      "https://github.com/DkhiliFares/eventsProject/blob/main/Jenkinsfile",
+      "https://github.com/DkhiliFares/eventsProject/blob/main/pom.xml",
+      "https://github.com/DkhiliFares/eventsProject/blob/main/src/main/java/tn/fst/eventsproject/controllers/EventRestController.java",
+      "https://github.com/DkhiliFares/eventsProject/blob/main/src/main/java/tn/fst/eventsproject/services/EventServicesImpl.java"
+    ],
+    "notes": [
+      "No root README; a detailed DevOps guide exists. Tests are present but were not run in this audit. Pipeline definition does not prove that all deployment stages currently succeed."
+    ],
+    "media": [
+      {
+        "src": "images/projects/eventsproject/concept.webp",
+        "alt": "Conceptual illustration for Event service & delivery pipeline, showing its engineering theme in cyan and violet field paths.",
+        "caption": "Original conceptual illustration for this case study; it does not depict tested hardware, a real interface or measured results.",
+        "width": 1599,
+        "height": 900,
+        "origin": "conceptual",
+        "role": "cover",
+        "source": null
+      }
+    ],
+    "sections": [
+      {
+        "id": "context",
+        "title": "Problem & context",
+        "paragraphs": [
+          "An academic Spring Boot application models events, participants and logistics, with supporting continuous-delivery configuration."
+        ]
+      },
+      {
+        "id": "implementation",
+        "title": "Implementation",
+        "paragraphs": [
+          "Controllers delegate operations to service classes and repository persistence. Maven manages the Java build; the Jenkinsfile and Docker artifacts define a delivery pipeline. A separate DevOps guide explains the intended workflow."
+        ]
+      },
+      {
+        "id": "challenges",
+        "title": "Engineering decisions & challenges",
+        "paragraphs": [
+          "A service implementation and its delivery environment have separate failure modes. The repository contains both application code and pipeline definitions, but a checked-in pipeline alone does not demonstrate successful deployment."
+        ]
+      },
+      {
+        "id": "results",
+        "title": "Observed evidence",
+        "paragraphs": [
+          "Application code, tests and delivery definitions are present. Tests and pipeline jobs were not executed as part of the repository audit."
+        ]
+      },
+      {
+        "id": "limitations",
+        "title": "Limitations & next steps",
+        "paragraphs": [
+          "Current runtime behavior, test coverage and pipeline success remain unverified. No production uptime or deployment result is asserted."
+        ]
+      }
+    ],
+    "feature": "Event service & delivery pipeline",
+    "diagram": {
+      "nodes": [
+        {
+          "label": "Clients",
+          "detail": "HTTP requests"
+        },
+        {
+          "label": "REST layer",
+          "detail": "Spring Boot"
+        },
+        {
+          "label": "Business logic",
+          "detail": "Java services"
+        },
+        {
+          "label": "Persistence",
+          "detail": "Repository interfaces"
+        }
+      ],
+      "caption": "Conceptual architecture drawn from the repository. Connections describe the documented flow; they do not imply a validated deployment."
+    },
+    "objectives": [
+      "Expose event and participant operations through REST APIs.",
+      "Separate controllers, services and persistence.",
+      "Define build, test and delivery stages."
+    ],
+    "components": [
+      "Java and Spring Boot",
+      "REST controllers and services",
+      "Maven and repository persistence",
+      "Jenkins and Docker"
+    ]
+  },
+  {
+    "id": "exemple-client-serveur-tcp-udp",
+    "title": "TCP and UDP communication exercises",
+    "repositoryName": "exemple_client_serveur_Tcp-udp",
+    "repository": "https://github.com/DkhiliFares/exemple_client_serveur_Tcp-udp",
+    "category": "networks",
+    "kind": "exercise",
+    "status": "unverified",
+    "statusLabel": "Learning exercise",
+    "visibility": "published",
+    "featured": false,
+    "summary": "Client/server examples demonstrate blocking TCP, a thread-per-client server and UDP object transfer.",
+    "technologies": [
+      "Java",
+      "TCP",
+      "UDP",
+      "Threads",
+      "Serialization"
+    ],
+    "caseStudy": false,
+    "fork": false,
+    "archived": false,
+    "sourceTree": "eb22954fc168b786c14a5687e5cce381bf326493",
+    "defaultBranch": "main",
+    "reviewedAt": "2026-11-21",
+    "evidence": [
+      "https://github.com/DkhiliFares/exemple_client_serveur_Tcp-udp",
+      "https://github.com/DkhiliFares/exemple_client_serveur_Tcp-udp/blob/main/multiClientTcp/src/multiClientTcp/ConcurrentDelayedTCPServer.java",
+      "https://github.com/DkhiliFares/exemple_client_serveur_Tcp-udp/blob/main/socketudp/src/socketudp/ClientUDP.java"
+    ],
+    "notes": [
+      "No README or deployment documentation. Examples use simple local protocols and are educational rather than secure network services."
+    ],
+    "media": [],
+    "sections": []
+  },
+  {
+    "id": "firedetection-esp32",
+    "title": "ESP8266 environmental alarm",
+    "repositoryName": "FireDetection__esp32",
+    "repository": "https://github.com/DkhiliFares/FireDetection__esp32",
+    "category": "iot",
+    "kind": "project",
+    "status": "unverified",
+    "statusLabel": "Prototype",
+    "visibility": "published",
+    "featured": false,
+    "summary": "A NodeMCU sketch reads DHT11 and MQ2 sensor values, reports serial readings and drives a buzzer when thresholds are exceeded.",
+    "technologies": [
+      "ESP8266",
+      "DHT11",
+      "MQ2",
+      "Arduino C++",
+      "GPIO"
+    ],
+    "caseStudy": true,
+    "fork": false,
+    "archived": false,
+    "sourceTree": "1979be8b684ad08e66b03e23d0dfa9c1a004c43b",
+    "defaultBranch": "main",
+    "reviewedAt": "2026-11-21",
+    "evidence": [
+      "https://github.com/DkhiliFares/FireDetection__esp32",
+      "https://github.com/DkhiliFares/FireDetection__esp32/blob/main/README.md",
+      "https://github.com/DkhiliFares/FireDetection__esp32/blob/main/sketch_may21a/sketch_may21a.ino"
+    ],
+    "notes": [
+      "Despite the repository name, both source and README identify ESP8266. Wi-Fi alerts and dashboard are future improvements. This is an educational threshold alarm, not a certified safety device."
+    ],
+    "media": [
+      {
+        "src": "images/projects/firedetection-esp32/concept.webp",
+        "alt": "Conceptual illustration for ESP8266 environmental alarm, showing its engineering theme in cyan and violet field paths.",
+        "caption": "Original conceptual illustration for this case study; it does not depict tested hardware, a real interface or measured results.",
+        "width": 1599,
+        "height": 900,
+        "origin": "conceptual",
+        "role": "cover",
+        "source": null
+      }
+    ],
+    "sections": [
+      {
+        "id": "context",
+        "title": "Problem & context",
+        "paragraphs": [
+          "This educational prototype reads temperature, humidity and gas-sensor values and drives a local alarm when configured thresholds are crossed. The repository name says ESP32, but its README and sketch identify ESP8266."
+        ]
+      },
+      {
+        "id": "implementation",
+        "title": "Implementation",
+        "paragraphs": [
+          "The Arduino sketch configures the sensor and buzzer pins, samples the inputs and evaluates thresholds in its loop. Its scope is local sensing and alert output."
+        ]
+      },
+      {
+        "id": "challenges",
+        "title": "Engineering decisions & challenges",
+        "paragraphs": [
+          "A threshold demonstration is different from a calibrated detection system. The source provides an understandable local control loop; sensor calibration, false alarms and fault behavior remain unverified."
+        ]
+      },
+      {
+        "id": "results",
+        "title": "Observed evidence",
+        "paragraphs": [
+          "Source supports sensor reads, serial reporting and local buzzer behavior. This is an educational prototype, with no certified fire or gas safety claim."
+        ]
+      },
+      {
+        "id": "limitations",
+        "title": "Limitations & next steps",
+        "paragraphs": [
+          "Wi-Fi notifications and dashboards are described as future improvements. Hardware calibration and safety performance were not independently verified."
+        ]
+      }
+    ],
+    "feature": "ESP8266 environmental alarm",
+    "diagram": {
+      "nodes": [
+        {
+          "label": "Sensors",
+          "detail": "DHT11 · MQ2"
+        },
+        {
+          "label": "Controller",
+          "detail": "ESP8266 / NodeMCU"
+        },
+        {
+          "label": "Threshold logic",
+          "detail": "Arduino sketch"
+        },
+        {
+          "label": "Alarm output",
+          "detail": "Buzzer · serial"
+        }
+      ],
+      "caption": "Conceptual architecture drawn from the repository. Connections describe the documented flow; they do not imply a validated deployment."
+    },
+    "objectives": [
+      "Read DHT11 and MQ2 measurements.",
+      "Report readings through serial output.",
+      "Activate a buzzer using threshold conditions."
+    ],
+    "components": [
+      "ESP8266 / NodeMCU",
+      "DHT11",
+      "MQ2 sensor",
+      "Buzzer"
+    ]
+  },
+  {
+    "id": "from0to99counter-sopc-with-fpga",
+    "title": "Nios II seven-segment counter",
+    "repositoryName": "From0to99Counter-SOPC_With_FPGA",
+    "repository": "https://github.com/DkhiliFares/From0to99Counter-SOPC_With_FPGA",
+    "category": "hardware",
+    "kind": "exercise",
+    "status": "unverified",
+    "statusLabel": "Academic implementation",
+    "visibility": "published",
+    "featured": false,
+    "summary": "VHDL integrates a Qsys processor system; a C program decomposes a counter into four digits and writes segment patterns through PIO.",
+    "technologies": [
+      "FPGA",
+      "Nios II",
+      "VHDL",
+      "C",
+      "Qsys",
+      "Memory-mapped I/O"
+    ],
+    "caseStudy": false,
+    "fork": false,
+    "archived": false,
+    "sourceTree": "d8839705dd3cae5bbe804818d4f89bb94522296d",
+    "defaultBranch": "main",
+    "reviewedAt": "2026-11-21",
+    "evidence": [
+      "https://github.com/DkhiliFares/From0to99Counter-SOPC_With_FPGA",
+      "https://github.com/DkhiliFares/From0to99Counter-SOPC_With_FPGA/blob/main/README.md",
+      "https://github.com/DkhiliFares/From0to99Counter-SOPC_With_FPGA/blob/main/Processeur2.qsys",
+      "https://github.com/DkhiliFares/From0to99Counter-SOPC_With_FPGA/blob/main/software/compteur0to9999/hello_world_small.c",
+      "https://github.com/DkhiliFares/From0to99Counter-SOPC_With_FPGA/blob/main/top_level.vhd"
+    ],
+    "notes": [
+      "Source counts 0000 to 9999 despite the repository name. Exact board is not established. README timing differs from the source busy-wait delay; do not claim calibrated update frequency."
+    ],
+    "media": [],
+    "sections": []
+  },
+  {
+    "id": "gprs-driver",
+    "title": "STM32 · SIM808 driver",
+    "repositoryName": "GPRS-DRIVER",
+    "repository": "https://github.com/DkhiliFares/GPRS-DRIVER",
+    "category": "embedded",
+    "kind": "project",
+    "status": "unverified",
+    "statusLabel": "Driver prototype",
+    "visibility": "published",
+    "featured": true,
+    "summary": "STM32 HAL C library defines SIM808 initialization, byte-wise UART receive interrupts and HTTP GET/POST routines.",
+    "technologies": [
+      "C",
+      "STM32",
+      "STM32 HAL",
+      "SIM808",
+      "UART",
+      "AT commands",
+      "HTTP",
+      "GPRS"
+    ],
+    "caseStudy": true,
+    "fork": false,
+    "archived": false,
+    "sourceTree": "e541b22e355447a58012b2f5cf649573796f9534",
+    "defaultBranch": "main",
+    "reviewedAt": "2026-11-21",
+    "evidence": [
+      "https://github.com/DkhiliFares/GPRS-DRIVER",
+      "https://github.com/DkhiliFares/GPRS-DRIVER/blob/main/README.md",
+      "https://github.com/DkhiliFares/GPRS-DRIVER/blob/main/gprs_lib.c",
+      "https://github.com/DkhiliFares/GPRS-DRIVER/blob/main/gprs_lib.h",
+      "https://github.com/DkhiliFares/GPRS-DRIVER/blob/main/main.c"
+    ],
+    "notes": [
+      "GET accepts a URL but does not configure it in the inspected function. Fixed delays, a hard-coded APN and an unbounded receive wait require hardening. The repository lacks the full generated STM32 project; do not claim standalone build success or dependable network handling."
+    ],
+    "media": [
+      {
+        "src": "images/projects/gprs-driver/concept.webp",
+        "alt": "Conceptual illustration for STM32 · SIM808 driver, showing its engineering theme in cyan and violet field paths.",
+        "caption": "Original conceptual illustration for this case study; it does not depict tested hardware, a real interface or measured results.",
+        "width": 1599,
+        "height": 900,
+        "origin": "conceptual",
+        "role": "cover",
+        "source": null
+      }
+    ],
+    "sections": [
+      {
+        "id": "context",
+        "title": "Problem & context",
+        "paragraphs": [
+          "Embedded applications often need a small communications layer between application code and a modem’s AT-command interface. This library explores that boundary with STM32 HAL and a SIM808 module."
+        ]
+      },
+      {
+        "id": "implementation",
+        "title": "Implementation",
+        "paragraphs": [
+          "gprs_lib.c and its header define initialization, receive handling and GET/POST routines. main.c illustrates the integration surface. Incoming UART bytes feed a receive buffer while command helpers sequence modem operations."
+        ]
+      },
+      {
+        "id": "challenges",
+        "title": "Engineering decisions & challenges",
+        "paragraphs": [
+          "Serial commands and asynchronous responses need reliable coordination. The implementation uses interrupt-driven receive collection alongside fixed delays and receive waiting. That is a concrete starting point, but response parsing and timeout handling still require hardening."
+        ]
+      },
+      {
+        "id": "results",
+        "title": "Observed evidence",
+        "paragraphs": [
+          "GET and POST function implementations and the receive callback are present. The source is a driver prototype, not a verified standalone firmware distribution; the complete generated STM32 project is not included."
+        ]
+      },
+      {
+        "id": "limitations",
+        "title": "Limitations & next steps",
+        "paragraphs": [
+          "The inspected GET function accepts a URL argument without configuring it. A fixed APN, fixed delays and an unbounded receive wait limit portability and resilience. No modem/network test was rerun for this portfolio."
+        ]
+      }
+    ],
+    "feature": "A bridge between firmware and the network.",
+    "diagram": {
+      "nodes": [
+        {
+          "label": "Application",
+          "detail": "HTTP GET / POST"
+        },
+        {
+          "label": "Driver layer",
+          "detail": "Embedded C"
+        },
+        {
+          "label": "Serial transport",
+          "detail": "HAL · UART · AT"
+        },
+        {
+          "label": "SIM808",
+          "detail": "GPRS modem"
+        }
+      ],
+      "caption": "Conceptual architecture drawn from the repository. Connections describe the documented flow; they do not imply a validated deployment."
+    },
+    "objectives": [
+      "Provide reusable modem initialization and request functions.",
+      "Collect UART bytes through the HAL interrupt callback.",
+      "Expose HTTP operations above the AT-command exchange."
+    ],
+    "components": [
+      "STM32 microcontroller",
+      "SIM808 modem",
+      "STM32 HAL UART",
+      "C API and application example"
+    ]
+  },
+  {
+    "id": "grpc",
+    "title": "gRPC service exercises",
+    "repositoryName": "grpc",
+    "repository": "https://github.com/DkhiliFares/grpc",
+    "category": "networks",
+    "kind": "exercise",
+    "status": "unverified",
+    "statusLabel": "Learning exercise",
+    "visibility": "published",
+    "featured": false,
+    "summary": "Java clients and a protobuf service demonstrate login request/response communication.",
+    "technologies": [
+      "Java",
+      "gRPC",
+      "Protocol Buffers",
+      "Maven"
+    ],
+    "caseStudy": false,
+    "fork": false,
+    "archived": false,
+    "sourceTree": "187a86adb32f10bc1f89b4d4f13677962aaa1772",
+    "defaultBranch": "main",
+    "reviewedAt": "2026-11-21",
+    "evidence": [
+      "https://github.com/DkhiliFares/grpc",
+      "https://github.com/DkhiliFares/grpc/blob/main/Grpc_tournage-main/src/main/java/user/UserService.java",
+      "https://github.com/DkhiliFares/grpc/blob/main/Grpc_tournage-main/src/main/resources/user.proto"
+    ],
+    "notes": [
+      "No README. Login compares two supplied strings and logout is empty; this is not a secure authentication implementation."
+    ],
+    "media": [],
+    "sections": []
+  },
+  {
+    "id": "ledgame-sopc-with-fpga",
+    "title": "FPGA · Nios II LED sequencer",
+    "repositoryName": "LedGame_SOPC_With_FPGA",
+    "repository": "https://github.com/DkhiliFares/LedGame_SOPC_With_FPGA",
+    "category": "hardware",
+    "kind": "project",
+    "status": "unverified",
+    "statusLabel": "Academic implementation",
+    "visibility": "published",
+    "featured": false,
+    "summary": "C firmware counts enabled switches and changes an eight-LED running-light delay; VHDL connects the Qsys SoPC and I/O.",
+    "technologies": [
+      "FPGA",
+      "Nios II",
+      "VHDL",
+      "C",
+      "Qsys",
+      "PIO"
+    ],
+    "caseStudy": true,
+    "fork": false,
+    "archived": false,
+    "sourceTree": "b5772854949e47e44743736b4ffae15639f33032",
+    "defaultBranch": "main",
+    "reviewedAt": "2026-11-21",
+    "evidence": [
+      "https://github.com/DkhiliFares/LedGame_SOPC_With_FPGA",
+      "https://github.com/DkhiliFares/LedGame_SOPC_With_FPGA/blob/main/README.md",
+      "https://github.com/DkhiliFares/LedGame_SOPC_With_FPGA/blob/main/software/LedGame/hello_world_small.c",
+      "https://github.com/DkhiliFares/LedGame_SOPC_With_FPGA/blob/main/SoPC.qsys",
+      "https://github.com/DkhiliFares/LedGame_SOPC_With_FPGA/blob/main/tpsopc.vhd"
+    ],
+    "notes": [
+      "Actual C and VHDL corroborate the core behavior. A Qsys screenshot and demonstration link are available. Board name is a README placeholder, and README paths differ from actual tree; avoid claiming a specific board or revalidated timing."
+    ],
+    "media": [
+      {
+        "src": "images/projects/ledgame-sopc-with-fpga/qsys-design.webp",
+        "alt": "Repository screenshot of the Nios II, memory, switch and LED connections in Qsys.",
+        "caption": "Repository screenshot of the Nios II, memory, switch and LED connections in Qsys.",
+        "width": 1245,
+        "height": 630,
+        "origin": "repository",
+        "role": "cover",
+        "source": "https://github.com/user-attachments/assets/0b1c245c-5e0b-4909-adb4-94795364a3ef"
+      }
+    ],
+    "sections": [
+      {
+        "id": "context",
+        "title": "Problem & context",
+        "paragraphs": [
+          "This academic SoPC project connects a processor implemented in programmable logic to physical input and output. The application changes a running LED sequence in response to switch input."
+        ]
+      },
+      {
+        "id": "implementation",
+        "title": "Implementation",
+        "paragraphs": [
+          "The VHDL top level instantiates the generated system and connects I/O. The C application counts enabled switches and uses that count in its delay calculation while advancing an eight-LED pattern."
+        ]
+      },
+      {
+        "id": "challenges",
+        "title": "Engineering decisions & challenges",
+        "paragraphs": [
+          "Hardware port names and software peripheral addresses must agree. The Qsys design, top-level integration and PIO access make this hardware/software boundary explicit. Busy-wait timing remains a limitation rather than a calibrated timer."
+        ]
+      },
+      {
+        "id": "results",
+        "title": "Observed evidence",
+        "paragraphs": [
+          "The checked C and VHDL implement the core switch-to-sequence behavior. The README provides a system screenshot and demonstration link. No hardware timing measurement was repeated for this portfolio."
+        ]
+      },
+      {
+        "id": "limitations",
+        "title": "Limitations & next steps",
+        "paragraphs": [
+          "The README leaves the board name as a placeholder and some file paths differ from the current tree. The case study does not infer a board model or precise timing."
+        ]
+      }
+    ],
+    "feature": "When software meets programmable logic.",
+    "diagram": {
+      "nodes": [
+        {
+          "label": "Switch inputs",
+          "detail": "Physical I/O"
+        },
+        {
+          "label": "Input peripheral",
+          "detail": "Qsys / PIO"
+        },
+        {
+          "label": "Application logic",
+          "detail": "Nios II / C"
+        },
+        {
+          "label": "Output peripheral",
+          "detail": "LED sequence"
+        }
+      ],
+      "caption": "Conceptual architecture drawn from the repository. Connections describe the documented flow; they do not imply a validated deployment."
+    },
+    "objectives": [
+      "Integrate a Qsys processor system with a VHDL top level.",
+      "Read switches through PIO.",
+      "Use C firmware to adjust the LED sequence delay."
+    ],
+    "components": [
+      "FPGA target; exact board unconfirmed",
+      "Nios II soft processor",
+      "Qsys / Platform Designer system",
+      "VHDL integration and C firmware"
+    ]
+  },
+  {
+    "id": "matrixproductopenmp",
+    "title": "Parallel matrix multiplication study",
+    "repositoryName": "MatrixProductOpenMP",
+    "repository": "https://github.com/DkhiliFares/MatrixProductOpenMP",
+    "category": "software",
+    "kind": "exercise",
+    "status": "unverified",
+    "statusLabel": "Learning exercise",
+    "visibility": "published",
+    "featured": false,
+    "summary": "Sequential and OpenMP matrix multiplication examples explore outer-loop, middle-loop and collapsed-loop parallelism.",
+    "technologies": [
+      "C",
+      "C++",
+      "OpenMP"
+    ],
+    "caseStudy": false,
+    "fork": false,
+    "archived": false,
+    "sourceTree": "27aed59c4800ad00f56cf4cb9cf4316a2e08240d",
+    "defaultBranch": "main",
+    "reviewedAt": "2026-11-21",
+    "evidence": [
+      "https://github.com/DkhiliFares/MatrixProductOpenMP",
+      "https://github.com/DkhiliFares/MatrixProductOpenMP/blob/main/README.md",
+      "https://github.com/DkhiliFares/MatrixProductOpenMP/blob/main/matric_product.c",
+      "https://github.com/DkhiliFares/MatrixProductOpenMP/blob/main/matrix.c",
+      "https://github.com/DkhiliFares/MatrixProductOpenMP/blob/main/matrix.cpp"
+    ],
+    "notes": [
+      "README includes example timings without a reproducible machine specification. No benchmarks were rerun; the portfolio should describe methods without claiming speedups."
+    ],
+    "media": [],
+    "sections": []
+  },
+  {
+    "id": "mini-projet-sys-reparti",
+    "title": "Distributed messaging services",
+    "repositoryName": "mini_projet_sys_reparti",
+    "repository": "https://github.com/DkhiliFares/mini_projet_sys_reparti",
+    "category": "networks",
+    "kind": "project",
+    "status": "unverified",
+    "statusLabel": "Academic implementation",
+    "visibility": "published",
+    "featured": false,
+    "summary": "Three services explore gRPC messaging, a threaded TCP chat server and a shared task list through Java RMI.",
+    "technologies": [
+      "Java",
+      "gRPC",
+      "Protocol Buffers",
+      "TCP",
+      "Threads",
+      "Java RMI"
+    ],
+    "caseStudy": true,
+    "fork": false,
+    "archived": false,
+    "sourceTree": "9621521b6ad18147864a576abe07c3e2cb03ecca",
+    "defaultBranch": "main",
+    "reviewedAt": "2026-11-21",
+    "evidence": [
+      "https://github.com/DkhiliFares/mini_projet_sys_reparti",
+      "https://github.com/DkhiliFares/mini_projet_sys_reparti/blob/main/README.md",
+      "https://github.com/DkhiliFares/mini_projet_sys_reparti/blob/main/chat_service/src/serveur_de_chat/ChatServer.java",
+      "https://github.com/DkhiliFares/mini_projet_sys_reparti/blob/main/liste_des_taches/src/liste_des_taches/ServeurRmi.java",
+      "https://github.com/DkhiliFares/mini_projet_sys_reparti/blob/main/Service%20de%20messagerie%20grpc/src/main/java/imp/MessagingServiceImpl.java"
+    ],
+    "notes": [
+      "Source implementations and a report exist, but current runtime behavior was not executed. Data structures are in-memory; persistence and production authentication are not demonstrated."
+    ],
+    "media": [
+      {
+        "src": "images/projects/mini-projet-sys-reparti/concept.webp",
+        "alt": "Conceptual illustration for Distributed messaging services, showing its engineering theme in cyan and violet field paths.",
+        "caption": "Original conceptual illustration for this case study; it does not depict tested hardware, a real interface or measured results.",
+        "width": 1599,
+        "height": 900,
+        "origin": "conceptual",
+        "role": "cover",
+        "source": null
+      }
+    ],
+    "sections": [
+      {
+        "id": "context",
+        "title": "Problem & context",
+        "paragraphs": [
+          "This mini-project explores three ways of structuring communication between processes: a threaded chat service, gRPC messaging and a shared task list using RMI."
+        ]
+      },
+      {
+        "id": "implementation",
+        "title": "Implementation",
+        "paragraphs": [
+          "Separate subprojects contain the chat server, messaging-service implementation and remote task-list service. Protobuf defines the gRPC interface; threads handle TCP clients; RMI exposes remote methods."
+        ]
+      },
+      {
+        "id": "challenges",
+        "title": "Engineering decisions & challenges",
+        "paragraphs": [
+          "The same application idea crosses different communication contracts. Keeping the services separate makes serialization, connection handling and remote method boundaries easier to compare."
+        ]
+      },
+      {
+        "id": "results",
+        "title": "Observed evidence",
+        "paragraphs": [
+          "Service implementations and a report are present. Source review establishes the service structure, not a deployed distributed-system reliability result."
+        ]
+      },
+      {
+        "id": "limitations",
+        "title": "Limitations & next steps",
+        "paragraphs": [
+          "State is held in memory. Durable storage, production authentication and failure recovery are not demonstrated. Runtime tests were not rerun for this portfolio."
+        ]
+      }
+    ],
+    "feature": "Distributed messaging services",
+    "diagram": {
+      "nodes": [
+        {
+          "label": "Clients",
+          "detail": "Java"
+        },
+        {
+          "label": "Communication",
+          "detail": "TCP · gRPC · RMI"
+        },
+        {
+          "label": "Service handlers",
+          "detail": "Threads · messages"
+        },
+        {
+          "label": "Shared state",
+          "detail": "In-memory structures"
+        }
+      ],
+      "caption": "Conceptual architecture drawn from the repository. Connections describe the documented flow; they do not imply a validated deployment."
+    },
+    "objectives": [
+      "Implement request/response messaging through gRPC.",
+      "Support multiple TCP chat clients.",
+      "Expose shared task operations through Java RMI."
+    ],
+    "components": [
+      "Java",
+      "gRPC and Protocol Buffers",
+      "TCP sockets and threads",
+      "Java RMI"
+    ]
+  },
+  {
+    "id": "network-administration-project",
+    "title": "Campus network monitoring lab",
+    "repositoryName": "Network_Administration_Project",
+    "repository": "https://github.com/DkhiliFares/Network_Administration_Project",
+    "category": "networks",
+    "kind": "reference",
+    "status": "unverified",
+    "statusLabel": "Completion unconfirmed",
+    "visibility": "published",
+    "featured": false,
+    "summary": "Guides describe a multi-department virtual campus network and monitoring with Zabbix and Akvorado.",
+    "technologies": [
+      "EVE-NG",
+      "Cisco",
+      "VLAN",
+      "Linux",
+      "QEMU",
+      "Zabbix",
+      "Akvorado",
+      "NetFlow",
+      "sFlow"
+    ],
+    "caseStudy": false,
+    "fork": false,
+    "archived": false,
+    "sourceTree": "f9f9d713aaa97ba505431862b22c9fb52404d212",
+    "defaultBranch": "main",
+    "reviewedAt": "2026-11-21",
+    "evidence": [
+      "https://github.com/DkhiliFares/Network_Administration_Project",
+      "https://github.com/DkhiliFares/Network_Administration_Project/blob/main/README.md",
+      "https://github.com/DkhiliFares/Network_Administration_Project/blob/main/AkvoradoConfiguration.md",
+      "https://github.com/DkhiliFares/Network_Administration_Project/blob/main/CampusTopology.md",
+      "https://github.com/DkhiliFares/Network_Administration_Project/blob/main/ZabbixConfiguration.md"
+    ],
+    "notes": [
+      "README outcomes are instructional promises, not completion evidence. User explicitly requires confirmation before presenting this as completed. May appear in archive only as completion unconfirmed; no completed case study."
+    ],
+    "media": [],
+    "sections": []
+  },
+  {
+    "id": "powerbi-project",
+    "title": "Power BI analytics report",
+    "repositoryName": "PowerBi-Project",
+    "repository": "https://github.com/DkhiliFares/PowerBi-Project",
+    "category": "cloud",
+    "kind": "project",
+    "status": "unverified",
+    "statusLabel": "Report / scope unverified",
+    "visibility": "published",
+    "featured": false,
+    "summary": "Repository contains a Power BI report file, a PDF mini-report and a shared report link.",
+    "technologies": [
+      "Power BI"
+    ],
+    "caseStudy": false,
+    "fork": false,
+    "archived": false,
+    "sourceTree": "42b5957e4e613ce5c0c4c4fe9b789e92632eda66",
+    "defaultBranch": "main",
+    "reviewedAt": "2026-11-21",
+    "evidence": [
+      "https://github.com/DkhiliFares/PowerBi-Project",
+      "https://github.com/DkhiliFares/PowerBi-Project/blob/main/README.md"
+    ],
+    "notes": [
+      "README contains no description beyond a service link. Dataset, analysis scope and current published report accessibility were not independently established. Keep as an archive item without invented outcomes."
+    ],
+    "media": [],
+    "sections": []
+  },
+  {
+    "id": "projetbigdata",
+    "title": "Hadoop and MapReduce laboratory",
+    "repositoryName": "projetbigdata",
+    "repository": "https://github.com/DkhiliFares/projetbigdata",
+    "category": "cloud",
+    "kind": "exercise",
+    "status": "unverified",
+    "statusLabel": "Learning exercises",
+    "visibility": "published",
+    "featured": false,
+    "summary": "Guides and Python scripts explore word counts, sales data, log processing, word scoring and matrix multiplication.",
+    "technologies": [
+      "Python",
+      "Hadoop",
+      "HDFS",
+      "YARN",
+      "MapReduce",
+      "Bash"
+    ],
+    "caseStudy": false,
+    "fork": false,
+    "archived": false,
+    "sourceTree": "c87bc7c7e1217ed828faa6e8906ca4ee4937c2a0",
+    "defaultBranch": "main",
+    "reviewedAt": "2026-11-21",
+    "evidence": [
+      "https://github.com/DkhiliFares/projetbigdata",
+      "https://github.com/DkhiliFares/projetbigdata/blob/main/README.md",
+      "https://github.com/DkhiliFares/projetbigdata/blob/main/logs%20%281%29.py",
+      "https://github.com/DkhiliFares/projetbigdata/blob/main/mult.py",
+      "https://github.com/DkhiliFares/projetbigdata/blob/main/Partie3_Avance_Guide.md",
+      "https://github.com/DkhiliFares/projetbigdata/blob/main/scrabble%20%281%29%20%281%29.py",
+      "https://github.com/DkhiliFares/projetbigdata/blob/main/wordcount_mapreduce.py"
+    ],
+    "notes": [
+      "Real documentation screenshots exist. Several scripts simulate shuffle/sort locally; do not imply every script is a deployed Hadoop job or claim production scale."
+    ],
+    "media": [],
+    "sections": []
+  },
+  {
+    "id": "raspberry-pi-monitoring",
+    "title": "Native C++ sensor monitoring",
+    "repositoryName": "Raspberry_Pi_Monitoring",
+    "repository": "https://github.com/DkhiliFares/Raspberry_Pi_Monitoring",
+    "category": "linux",
+    "kind": "project",
+    "status": "unverified",
+    "statusLabel": "Prototype / integration incomplete",
+    "visibility": "published",
+    "featured": false,
+    "summary": "Component classes implement sensor acquisition, LED/button handling, MQTT operations and HTTP writes to InfluxDB.",
+    "technologies": [
+      "C++17",
+      "Raspberry Pi",
+      "DHT11",
+      "pigpio",
+      "Paho MQTT",
+      "libcurl",
+      "InfluxDB",
+      "CMake",
+      "Threads"
+    ],
+    "caseStudy": true,
+    "fork": false,
+    "archived": false,
+    "sourceTree": "a572fd17d57fe8014ad022a0990e88f3f589b8eb",
+    "defaultBranch": "main",
+    "reviewedAt": "2026-11-21",
+    "evidence": [
+      "https://github.com/DkhiliFares/Raspberry_Pi_Monitoring",
+      "https://github.com/DkhiliFares/Raspberry_Pi_Monitoring/blob/main/README.md",
+      "https://github.com/DkhiliFares/Raspberry_Pi_Monitoring/blob/main/CMakeLists.txt",
+      "https://github.com/DkhiliFares/Raspberry_Pi_Monitoring/blob/main/src/ButtonHandler.cpp",
+      "https://github.com/DkhiliFares/Raspberry_Pi_Monitoring/blob/main/src/Dht11Sensor.cpp",
+      "https://github.com/DkhiliFares/Raspberry_Pi_Monitoring/blob/main/src/InfluxDbManager.cpp",
+      "https://github.com/DkhiliFares/Raspberry_Pi_Monitoring/blob/main/src/LedController.cpp",
+      "https://github.com/DkhiliFares/Raspberry_Pi_Monitoring/blob/main/src/main.cpp",
+      "https://github.com/DkhiliFares/Raspberry_Pi_Monitoring/blob/main/src/MqttManager.cpp"
+    ],
+    "notes": [
+      "Main defines an MQTT callback but does not register it or call connect; GPIO-using objects are constructed before gpioInitialise. Reboot is explicitly simulated. Do not claim a verified complete working telemetry/control deployment."
+    ],
+    "media": [
+      {
+        "src": "images/projects/raspberry-pi-monitoring/concept.webp",
+        "alt": "Conceptual illustration for Native C++ sensor monitoring, showing its engineering theme in cyan and violet field paths.",
+        "caption": "Original conceptual illustration for this case study; it does not depict tested hardware, a real interface or measured results.",
+        "width": 1599,
+        "height": 900,
+        "origin": "conceptual",
+        "role": "cover",
+        "source": null
+      }
+    ],
+    "sections": [
+      {
+        "id": "context",
+        "title": "Problem & context",
+        "paragraphs": [
+          "This project explores a Raspberry Pi monitoring application built with native C++ libraries. Component classes separate acquisition, local controls, messaging and storage."
+        ]
+      },
+      {
+        "id": "implementation",
+        "title": "Implementation",
+        "paragraphs": [
+          "Dht11Sensor, LedController, ButtonHandler, MqttManager and InfluxDbManager form separate components. CMake links the application against pigpio, Paho MQTT and libcurl."
+        ]
+      },
+      {
+        "id": "challenges",
+        "title": "Engineering decisions & challenges",
+        "paragraphs": [
+          "Initialization order and asynchronous networking are critical integration boundaries. Source review found GPIO objects created before initialization and an MQTT callback defined without registration or connection in main. These are unresolved integration gaps."
+        ]
+      },
+      {
+        "id": "results",
+        "title": "Observed evidence",
+        "paragraphs": [
+          "The repository demonstrates component implementations and a documented messaging API. It does not establish a fully working integrated deployment in its current main path."
+        ]
+      },
+      {
+        "id": "limitations",
+        "title": "Limitations & next steps",
+        "paragraphs": [
+          "Startup and MQTT wiring need completion and target testing. The reboot command is simulated. No real-time or reliability guarantee is claimed."
+        ]
+      }
+    ],
+    "feature": "Native C++ sensor monitoring",
+    "diagram": {
+      "nodes": [
+        {
+          "label": "Acquisition",
+          "detail": "DHT11 · GPIO"
+        },
+        {
+          "label": "Components",
+          "detail": "C++17 · threads"
+        },
+        {
+          "label": "Messaging",
+          "detail": "Paho MQTT"
+        },
+        {
+          "label": "Persistence",
+          "detail": "HTTP · InfluxDB"
+        }
+      ],
+      "caption": "Conceptual component relationships: acquisition feeds the application, which has separate MQTT and InfluxDB interfaces. Integration gaps remain in main.cpp.",
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ]
+    },
+    "objectives": [
+      "Read an environmental sensor and control GPIO.",
+      "Represent MQTT publishing and remote command handling.",
+      "Write measurements to InfluxDB using HTTP."
+    ],
+    "components": [
+      "Raspberry Pi, DHT11, LED and button",
+      "C++17 and CMake",
+      "pigpio, Paho MQTT and libcurl",
+      "InfluxDB HTTP interface"
+    ]
+  },
+  {
+    "id": "rmi",
+    "title": "Java RMI exercises",
+    "repositoryName": "Rmi",
+    "repository": "https://github.com/DkhiliFares/Rmi",
+    "category": "networks",
+    "kind": "exercise",
+    "status": "unverified",
+    "statusLabel": "Learning exercises",
+    "visibility": "published",
+    "featured": false,
+    "summary": "Examples implement remote string reversal, delayed callbacks and a remote object factory.",
+    "technologies": [
+      "Java",
+      "Java RMI",
+      "Threads"
+    ],
+    "caseStudy": false,
+    "fork": false,
+    "archived": false,
+    "sourceTree": "00b12ebbf40c22eb8776f19efcba8ab1ab9f6eb9",
+    "defaultBranch": "main",
+    "reviewedAt": "2026-11-21",
+    "evidence": [
+      "https://github.com/DkhiliFares/Rmi",
+      "https://github.com/DkhiliFares/Rmi/blob/main/ClientServeurRmi/src/clientserveurRmi/ReverseImpl.java",
+      "https://github.com/DkhiliFares/Rmi/blob/main/fabrique/src/fabrique/RemoteObjectFactoryImpl.java",
+      "https://github.com/DkhiliFares/Rmi/blob/main/Rmi_Sec_Dynamic/src/rmi_sec_dyn/IServerImp.java"
+    ],
+    "notes": [
+      "No root README; purpose is established by source classes. No distributed deployment, security or performance evidence is supplied."
+    ],
+    "media": [],
+    "sections": []
+  },
+  {
+    "id": "school",
+    "title": "Student management API",
+    "repositoryName": "school",
+    "repository": "https://github.com/DkhiliFares/school",
+    "category": "software",
+    "kind": "exercise",
+    "status": "unverified",
+    "statusLabel": "Academic implementation",
+    "visibility": "published",
+    "featured": false,
+    "summary": "REST controllers and services expose student registration, listing, update and deletion using repository persistence.",
+    "technologies": [
+      "Java",
+      "Spring Boot",
+      "Spring Data",
+      "Maven",
+      "JUnit",
+      "Mockito",
+      "Docker"
+    ],
+    "caseStudy": false,
+    "fork": false,
+    "archived": false,
+    "sourceTree": "b056d71f865721c9ea577ff79f9ae26519d72e55",
+    "defaultBranch": "master",
+    "reviewedAt": "2026-11-21",
+    "evidence": [
+      "https://github.com/DkhiliFares/school",
+      "https://github.com/DkhiliFares/school/blob/master/documentation.md",
+      "https://github.com/DkhiliFares/school/blob/master/pom.xml",
+      "https://github.com/DkhiliFares/school/blob/master/src/main/java/tn/m104/rh/control/StudentController.java",
+      "https://github.com/DkhiliFares/school/blob/master/src/main/java/tn/m104/rh/service/StudentServiceImpl.java"
+    ],
+    "notes": [
+      "No root README; documentation.md and service tests exist. Tests and deployment were not executed in this audit; no claims about current coverage or uptime."
+    ],
+    "media": [],
+    "sections": []
+  },
+  {
+    "id": "secureaccess",
+    "title": "SecureAccess",
+    "repositoryName": "SecureAccess",
+    "repository": "https://github.com/DkhiliFares/SecureAccess",
+    "category": "security-ai",
+    "kind": "project",
+    "status": "unverified",
+    "statusLabel": "Prototype",
+    "visibility": "published",
+    "featured": true,
+    "summary": "Face recognition on Raspberry Pi sends authentication events and encrypted image payloads to a Flask dashboard with logs and sensor/door views.",
+    "technologies": [
+      "Python",
+      "Raspberry Pi",
+      "Picamera2",
+      "OpenCV",
+      "face_recognition",
+      "Flask",
+      "AES-CCM",
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "caseStudy": true,
+    "fork": false,
+    "archived": false,
+    "sourceTree": "932ab6c1dc4d0705d10d4faf33dc27634632a82e",
+    "defaultBranch": "main",
+    "reviewedAt": "2026-11-21",
+    "evidence": [
+      "https://github.com/DkhiliFares/SecureAccess",
+      "https://github.com/DkhiliFares/SecureAccess/blob/main/README.md",
+      "https://github.com/DkhiliFares/SecureAccess/blob/main/back.py",
+      "https://github.com/DkhiliFares/SecureAccess/blob/main/crypto_utils.py",
+      "https://github.com/DkhiliFares/SecureAccess/blob/main/Secure_Access_Site/raspberry/ai.py",
+      "https://github.com/DkhiliFares/SecureAccess/blob/main/Secure_Access_Site/requirements.txt",
+      "https://github.com/DkhiliFares/SecureAccess/blob/main/Secure_Access_Site/src/main.py"
+    ],
+    "notes": [
+      "CV and README describe RFID/PIN/PIR, but the inspected capture script generates RFID-like IDs and accepts known faces without validating RFID/PIN; do not equate this source path with a verified full multi-factor flow. Default/sample key handling needs review. No published accuracy or latency claim is independently substantiated."
+    ],
+    "media": [
+      {
+        "src": "images/projects/secureaccess/concept.webp",
+        "alt": "Conceptual illustration for SecureAccess, showing its engineering theme in cyan and violet field paths.",
+        "caption": "Original conceptual illustration for this case study; it does not depict tested hardware, a real interface or measured results.",
+        "width": 1599,
+        "height": 900,
+        "origin": "conceptual",
+        "role": "cover",
+        "source": null
+      }
+    ],
+    "sections": [
+      {
+        "id": "context",
+        "title": "Problem & context",
+        "paragraphs": [
+          "The project explores how a room-access system can connect on-device recognition with a reviewable record of access attempts. The CV and README describe a broader RFID, PIN and presence-sensing design; the public code supports a narrower, demonstrable image-and-event path."
+        ]
+      },
+      {
+        "id": "implementation",
+        "title": "Implementation",
+        "paragraphs": [
+          "The capture script combines Picamera2, OpenCV and face_recognition, then posts events and image data to the server. Separate crypto helpers implement AES-CCM encryption and decryption. The web application separates monitoring routes, templates and stored event data."
+        ]
+      },
+      {
+        "id": "challenges",
+        "title": "Engineering decisions & challenges",
+        "paragraphs": [
+          "The design has to connect recognition, transport and image storage without treating them as a single opaque step. Separate capture, cryptographic and web components make these boundaries visible. The checked capture path generates RFID-like identifiers; a complete physical multi-factor validation sequence is not established by that script."
+        ]
+      },
+      {
+        "id": "results",
+        "title": "Observed evidence",
+        "paragraphs": [
+          "Source inspection supports the recognition-to-dashboard path and encrypted-image helpers. The repository includes demonstration media and expected test scenarios. No independent accuracy, latency or security result is claimed."
+        ]
+      },
+      {
+        "id": "limitations",
+        "title": "Limitations & next steps",
+        "paragraphs": [
+          "The public capture path does not verify the full RFID/PIN flow described in the broader design. Key provisioning and secure transport need review before real deployment. A prototype is not a security assurance."
+        ]
+      }
+    ],
+    "feature": "Trust, from the edge to the interface.",
+    "diagram": {
+      "nodes": [
+        {
+          "label": "Camera input",
+          "detail": "Raspberry Pi"
+        },
+        {
+          "label": "Face recognition",
+          "detail": "Python · OpenCV"
+        },
+        {
+          "label": "Encrypted payload",
+          "detail": "AES-CCM"
+        },
+        {
+          "label": "Access dashboard",
+          "detail": "Flask · event logs"
+        }
+      ],
+      "caption": "Conceptual architecture drawn from the repository. Connections describe the documented flow; they do not imply a validated deployment.",
+      "title": "Recognition-to-dashboard path"
+    },
+    "objectives": [
+      "Capture and classify camera images at the edge.",
+      "Send access events and encrypted visual data to a monitoring interface.",
+      "Make access attempts visible through a Flask dashboard."
+    ],
+    "components": [
+      "Raspberry Pi and camera",
+      "Python, OpenCV and face_recognition",
+      "Flask web application",
+      "AES-CCM image helpers"
+    ]
+  },
+  {
+    "id": "socket",
+    "title": "RMI calculator and UDP time service",
+    "repositoryName": "socket",
+    "repository": "https://github.com/DkhiliFares/socket",
+    "category": "networks",
+    "kind": "exercise",
+    "status": "unverified",
+    "statusLabel": "Learning exercises",
+    "visibility": "published",
+    "featured": false,
+    "summary": "Java exercises include a remote calculator and UDP request/reply services, including date/time responses.",
+    "technologies": [
+      "Java",
+      "Java RMI",
+      "UDP",
+      "Serialization"
+    ],
+    "caseStudy": false,
+    "fork": false,
+    "archived": false,
+    "sourceTree": "bb52529ecfd03a3d4ee4d83c0ef98fcef89d9440",
+    "defaultBranch": "main",
+    "reviewedAt": "2026-11-21",
+    "evidence": [
+      "https://github.com/DkhiliFares/socket",
+      "https://github.com/DkhiliFares/socket/blob/main/calculette/src/calculatteRMI/CalcServeur.java",
+      "https://github.com/DkhiliFares/socket/blob/main/socketUDPex2/src/socketUDPex2/ServeurUdp.java"
+    ],
+    "notes": [
+      "No README. Local learning examples; deployment and robust error/security behavior are not verified."
+    ],
+    "media": [],
+    "sections": []
+  },
+  {
+    "id": "testcorempro",
+    "title": "Engineering analysis utilities",
+    "repositoryName": "testcorempro",
+    "repository": "https://github.com/DkhiliFares/testcorempro",
+    "category": "embedded",
+    "kind": "project",
+    "status": "unverified",
+    "statusLabel": "Withheld pending confidentiality review",
+    "visibility": "draft",
+    "featured": false,
+    "summary": "A public repository includes linker-map analysis utilities and engineering reference material.",
+    "technologies": [
+      "Python",
+      "Tkinter",
+      "openpyxl"
+    ],
+    "caseStudy": false,
+    "fork": false,
+    "archived": false,
+    "sourceTree": "cfbb9eb9e86b9109fd6d881c93f564cdd1106fba",
+    "defaultBranch": "main",
+    "reviewedAt": "2026-11-21",
+    "evidence": [
+      "https://github.com/DkhiliFares/testcorempro",
+      "https://github.com/DkhiliFares/testcorempro/blob/main/README.md",
+      "https://github.com/DkhiliFares/testcorempro/blob/main/map_analyser.py"
+    ],
+    "notes": [
+      "Withhold from the public site because accompanying benchmarking/comparison material requires confidentiality review. No internal figures, comparisons, documents or results may be republished."
+    ],
+    "media": [],
+    "sections": []
+  },
+  {
+    "id": "cutiepi",
+    "title": "cutiePI",
+    "repositoryName": null,
+    "repository": null,
+    "category": "iot",
+    "kind": "project",
+    "status": "planned",
+    "statusLabel": "Planned",
+    "visibility": "draft",
+    "featured": false,
+    "summary": "Future project; no implementation claimed.",
+    "technologies": [],
+    "caseStudy": false,
+    "evidence": [],
+    "notes": [],
+    "media": [],
+    "sections": []
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "embedded",
+    "title": "Embedded systems",
+    "subtitle": "Firmware & microcontrollers"
+  },
+  {
+    "id": "linux",
+    "title": "Linux & systems",
+    "subtitle": "From toolchain to target"
+  },
+  {
+    "id": "networks",
+    "title": "Networking",
+    "subtitle": "Protocols & infrastructure"
+  },
+  {
+    "id": "iot",
+    "title": "Connected systems",
+    "subtitle": "Sensors, messages & gateways"
+  },
+  {
+    "id": "hardware",
+    "title": "Digital hardware",
+    "subtitle": "Logic, processors & I/O"
+  },
+  {
+    "id": "software",
+    "title": "Software engineering",
+    "subtitle": "Languages & applications"
+  },
+  {
+    "id": "cloud",
+    "title": "Cloud & data",
+    "subtitle": "Infrastructure & processing"
+  },
+  {
+    "id": "security-ai",
+    "title": "Security & AI",
+    "subtitle": "Trust, vision & tooling"
+  }
+]

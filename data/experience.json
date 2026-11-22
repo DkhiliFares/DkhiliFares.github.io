@@ -1,0 +1,63 @@
+[
+  {
+    "id": "st-2026",
+    "title": "End-of-Study Internship",
+    "company": "STMicroelectronics",
+    "period": "February – August 2026",
+    "year": "2026",
+    "summary": "AI-assisted tooling for embedded development workflows.",
+    "details": [
+      "Worked on AI-assisted project creation, porting, build configuration and debugging workflows in the STM32 ecosystem.",
+      "Explored embedded software and middleware integration, connecting development tools with firmware workflows."
+    ],
+    "technologies": [
+      "STM32Cube",
+      "Python",
+      "AI agents",
+      "LLM integration",
+      "Embedded software"
+    ],
+    "source": "Supplied CV; public summary restricted to non-confidential topics."
+  },
+  {
+    "id": "st-2025",
+    "title": "Software Development Internship",
+    "company": "STMicroelectronics",
+    "period": "July – August 2025",
+    "year": "2025",
+    "summary": "From Linux dependencies to bare-metal STM32 software.",
+    "details": [
+      "Ported CoreMark-PRO from Linux to bare-metal STM32, adapting POSIX dependencies and the MITH layer for ARM Cortex-M.",
+      "Worked with IAR and STM32Cube tools on embedded builds and memory configuration."
+    ],
+    "technologies": [
+      "C",
+      "STM32",
+      "ARM Cortex-M",
+      "IAR",
+      "Linux / POSIX"
+    ],
+    "source": "Supplied CV."
+  },
+  {
+    "id": "vicom-2024",
+    "title": "Software Development Internship",
+    "company": "Vicom Consulting",
+    "period": "August 2024",
+    "year": "2024",
+    "summary": "Taking a Qt application from host toolchain to Raspberry Pi.",
+    "details": [
+      "Cross-compiled a Qt application for Linux on Raspberry Pi using a custom ARM toolchain and adapted its build system.",
+      "Deployed over SSH and validated the application on the target system."
+    ],
+    "technologies": [
+      "C++",
+      "Qt",
+      "Linux",
+      "Cross-compilation",
+      "Raspberry Pi",
+      "SSH"
+    ],
+    "source": "Supplied CV."
+  }
+]

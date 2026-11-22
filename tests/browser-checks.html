@@ -1,0 +1,43 @@
+﻿<!doctype html>
+<html lang="en">
+<meta charset="utf-8"><title>Portfolio browser checks</title>
+<style>
+body{background:#0b111b;color:#f1f5fa;font:16px/1.6 system-ui;margin:24px}a{color:#40bceb}table{border-collapse:collapse}td,th{padding:8px 20px;border:1px solid #36516b;text-align:left}.pass{color:#55d3c1}.fail{color:#ff9489}#stage{position:absolute;top:800px;left:0}iframe{border:0;background:#0b111b}#manual{overflow:auto;border:1px solid #36516b;margin-top:30px}#manual iframe{display:block}
+</style>
+<h1>Portfolio browser checks</h1>
+<p id="status">Running rendered layout checks…</p>
+<p><a href="/index.html">Open desktop site</a> · <a href="/projects/index.html">Open archive</a> · <a href="/index.html?nojs">Open without JavaScript</a> · <a href="#mobile">Mobile preview</a></p>
+<table><thead><tr><th>Page / viewport</th><th>Result</th><th>Details</th></tr></thead><tbody id="results"></tbody></table>
+<h2 id="mobile">360px interactive preview</h2>
+<div id="manual"><iframe title="Mobile preview" src="/index.html" width="360" height="780"></iframe></div><div id="stage"></div>
+<script>
+const records=[], table=document.querySelector('#results');
+async function run(url,width){
+ const frame=document.createElement('iframe');frame.width=width;frame.height=900;frame.title=`Check ${url} at ${width}px`;
+ document.querySelector('#stage').replaceChildren(frame);
+ await new Promise(resolve=>{frame.onload=resolve;frame.src=url;});
+ const doc=frame.contentDocument;await doc.fonts.ready;await new Promise(r=>setTimeout(r,150));
+ const viewport=doc.documentElement.clientWidth;
+ const overflow=doc.documentElement.scrollWidth>viewport+1;
+ const offenders=overflow?[...doc.querySelectorAll('body *')].filter(el=>{const b=el.getBoundingClientRect();return b.width>0&&(b.right>viewport+2||b.left< -2)&&!el.closest('.achievement');}).slice(0,8).map(el=>typeof el.className==='string'?el.className:el.tagName):[];
+ const errors=frame.contentWindow.__qaErrors||[];
+ const missingImages=[...doc.images].filter(i=>i.complete&&!i.naturalWidth).length;
+ const fonts=doc.fonts.check('400 16px "Inter"')&&doc.fonts.check('500 16px "Space Grotesk"')&&doc.fonts.check('400 16px "JetBrains Mono"');
+ const headings=doc.querySelectorAll('h1').length===1, main=doc.querySelectorAll('main').length===1;
+ const unnamed=[...doc.querySelectorAll('input,select,button')].filter(el=>!el.labels?.length&&!el.getAttribute('aria-label')&&!el.getAttribute('aria-labelledby')&&!el.textContent.trim()).length;
+ const pass=!overflow&&!errors.length&&!missingImages&&fonts&&headings&&main&&!unnamed;
+ const record={url,width,viewport,pass,scrollWidth:doc.documentElement.scrollWidth,errors,missingImages,fonts,headings,main,unnamed,offenders};records.push(record);
+ const row=table.insertRow();for(const text of [`${url} · ${width}px`,pass?'PASS':'FAIL',`width ${record.scrollWidth}/${viewport}; ${errors.length} errors; fonts ${fonts?'loaded':'missing'}${offenders.length?'; '+offenders.join(', '):''}`])row.insertCell().textContent=text;row.className=pass?'pass':'fail';
+}
+(async()=>{
+ for(const w of [360,390,768,1024,1440])await run('/index.html',w);
+ for(const w of [360,768,1440])await run('/projects/index.html',w);
+ const archive=new DOMParser().parseFromString(await (await fetch('/projects/index.html')).text(),'text/html');
+ const cases=[...new Set([...archive.querySelectorAll('.archive-identity h2 a')].map(a=>new URL(a.getAttribute('href'),location.origin+'/projects/').pathname))];
+ for(const url of cases)for(const w of [360,1440])await run(url,w);
+ for(const url of ['/index.html?nojs','/projects/index.html?nojs','/cv/index.html','/articles/index.html','/404.html'])for(const w of [360,1440])await run(url,w);
+ document.querySelector('#stage').remove();const pass=records.every(r=>r.pass);
+ document.querySelector('#status').textContent=`${records.filter(r=>r.pass).length}/${records.length} rendered checks passed`;
+ await fetch('/__qa__/results',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({pass,records,userAgent:navigator.userAgent})});
+})();
+</script></html>
