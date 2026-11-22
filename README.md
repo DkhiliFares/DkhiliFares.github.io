@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Fares Dkhili — engineering portfolio
 
 An evidence-led static portfolio built from JSON with vanilla HTML, CSS, ES modules, SVG and Canvas 2D. The visual system uses connected field paths across work, skills and professional history. No framework or runtime package dependency is required.
@@ -102,4 +101,3 @@ The earlier three-file version was backed up under the ignored `.research/previo
 =======
 # DkhiliFares.github.io
 Personal engineering portfolio
->>>>>>> origin/main
