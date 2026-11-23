@@ -5,6 +5,7 @@ import path from 'node:path';
 import { loadContent,validateContent,root } from '../scripts/validate-content.mjs';
 import { build } from '../scripts/build.mjs';
 import { matchesProject } from '../src/scripts/filters.js';
+import { home } from '../src/pages/home.mjs';
 const original=await loadContent();
 test('public content covers repository projects with repository-backed evidence',async()=>{
  await validateContent(original);
@@ -27,6 +28,21 @@ test('public content covers repository projects with repository-backed evidence'
  assert.equal(original.experience.length,3);
  assert.equal(original.education[0].major,'Computer Engineering');
 });
+test('skill details show only links to related projects when available',()=>{
+ const homepage=home(original);
+ assert(!JSON.stringify(original.skills).includes('Supported by project code or documented integration; project limitations still apply.'));
+ assert(!homepage.includes('Supported by project code or documented integration; project limitations still apply.'));
+ assert(!homepage.includes('Evidence describes where a technology was used or studied. It is not a proficiency rating. Project links retain the implementation limits described in each study.'));
+ const details=[...homepage.matchAll(/<details class="skill-detail" data-skill="([^"]+)">([\s\S]*?)<\/details>/g)];
+ assert.equal(details.length,original.skills.length);
+ for(const [,id,html] of details){
+  const skill=original.skills.find(item=>item.id===id);
+  const projectLinks=[...html.matchAll(/data-evidence-project="([^"]+)"/g)].map(match=>match[1]);
+  assert.deepEqual(projectLinks,skill.projects);
+  assert.doesNotMatch(html,/data-evidence-experience|Training record|CTF achievement/);
+  assert.equal(html.includes('class="skill-evidence"'),skill.projects.length>0);
+ }
+});
 test('public content excludes private contact fields and editorial evidence',()=>{
  assert.equal(Object.hasOwn(original.profile,'email'),false);
  for(const certification of original.certifications){
@@ -46,10 +62,21 @@ test('build excludes draft/private material and resolves local links, anchors an
  const oldBase=process.env.BASE_PATH,oldSite=process.env.SITE_URL;process.env.BASE_PATH='/engineering-portfolio/';process.env.SITE_URL='https://example.github.io';
  try{
   const {outDir,routes}=await build({outDir:path.join(root,'.qa/subpath')});assert.equal(routes.length,18);
+  const homepage=await readFile(path.join(outDir,'index.html'),'utf8');
+  for(const label of ['Portrait of Fares Dkhili','Faculty of Sciences of Tunis logo','STMicroelectronics logo','NVIDIA logo','Cisco logo','CSF logo'])assert(homepage.includes(`alt="${label}"`),`Missing accessible image label: ${label}`);
+  for(const asset of ['images/profile/fares.webp','images/organizations/fst.webp','images/organizations/stmicroelectronics.webp','images/organizations/nvidia.webp','images/organizations/cisco.webp','images/organizations/csf.webp'])await assert.doesNotReject(()=>stat(path.join(outDir,asset)),`Missing public image ${asset}`);
+  const section=(start,end)=>homepage.slice(homepage.indexOf(`id="${start}"`),homepage.indexOf(`id="${end}"`));
+  const experienceSection=section('experience','education'),educationSection=section('education','credentials'),credentialsSection=section('credentials','about');
+  assert(experienceSection.includes('images/organizations/stmicroelectronics.webp'));
+  assert(!experienceSection.includes('images/organizations/fst.webp'));
+  assert(educationSection.includes('images/organizations/fst.webp'));
+  assert(!educationSection.includes('images/organizations/stmicroelectronics.webp'));
+  for(const image of ['nvidia.webp','cisco.webp','csf.webp'])assert(credentialsSection.includes(`images/organizations/${image}`),`Logo is not in credentials: ${image}`);
+  assert(!homepage.includes('organization-grid'));
   const files=await htmlFiles(outDir);let checked=0;
   for(const file of files){const html=await readFile(file,'utf8');assert(!/testcorempro|cutiePI|400%|GigaDevice|competitor MCUs/i.test(html),file);assert(!/>\s*Magnet\s*</.test(html));if(original.profile.email)assert(!html.includes(original.profile.email),`Public email exposed in ${file}`);
    const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);assert.equal(new Set(ids).size,ids.length,`Duplicate IDs in ${file}`);
-   for(const m of html.matchAll(/\b(?:href|src)="([^"]+)"/g)){const raw=m[1].replaceAll('&amp;','&');if(/^(https?:|mailto:|data:)/.test(raw))continue;const url=new URL(raw,'https://example.github.io/engineering-portfolio/'+path.relative(outDir,file).replaceAll('\\','/'));assert(url.pathname.startsWith('/engineering-portfolio/'),`Escaping base: ${raw} in ${file}`);let dest=path.join(outDir,decodeURIComponent(url.pathname.replace('/engineering-portfolio/','')));if((await stat(dest).catch(()=>null))?.isDirectory())dest=path.join(dest,'index.html');await assert.doesNotReject(()=>stat(dest),`Broken link ${raw} in ${file}`);if(url.hash){const target=await readFile(dest,'utf8');assert(target.includes(`id="${decodeURIComponent(url.hash.slice(1))}"`),`Missing anchor ${raw}`);}checked++;}
+   for(const m of html.matchAll(/\b(?:href|src)="([^"]+)"/g)){const raw=m[1].replaceAll('&amp;','&');if(/^(https?:|mailto:|data:)/.test(raw))continue;const url=new URL(raw,'https://example.github.io/engineering-portfolio/'+path.relative(outDir,file).replaceAll('\\','/'));assert(url.pathname.startsWith('/engineering-portfolio/'),`Escaping base: ${raw} in ${file}`);let dest=path.join(outDir,decodeURIComponent(url.pathname.replace('/engineering-portfolio/','')));if((await stat(dest).catch(()=>null))?.isDirectory())dest=path.join(dest,'index.html');await assert.doesNotReject(()=>stat(dest),`Broken link ${raw} in ${file}`);if(url.hash&&!url.pathname.endsWith('/manage/')){const target=await readFile(dest,'utf8');assert(target.includes(`id="${decodeURIComponent(url.hash.slice(1))}"`),`Missing anchor ${raw}`);}checked++;}
   }
   assert(checked>400);const filesAtRoot=await readdir(outDir);assert(!filesAtRoot.includes('data'));assert(!filesAtRoot.includes('Fares Dkhili.pdf'));const sitemap=await readFile(path.join(outDir,'sitemap.xml'),'utf8');assert(sitemap.includes('/engineering-portfolio/projects/secureaccess/'));assert(!sitemap.includes('/owner/'));assert((await readFile(path.join(outDir,'owner/index.html'),'utf8')).includes('noindex,nofollow'));
  }finally{if(oldBase===undefined)delete process.env.BASE_PATH;else process.env.BASE_PATH=oldBase;if(oldSite===undefined)delete process.env.SITE_URL;else process.env.SITE_URL=oldSite;}

@@ -26,6 +26,15 @@ jobs:
         run: npm --prefix owner-dashboard ci
       - name: Build owner dashboard
         run: npm run dashboard:build
+      - name: Check public backend configuration
+        env:
+          SUPABASE_URL: ${{ vars.SUPABASE_URL }}
+          SUPABASE_PUBLISHABLE_KEY: ${{ vars.SUPABASE_PUBLISHABLE_KEY }}
+        run: |
+          if [ -z "$SUPABASE_URL" ] || [ -z "$SUPABASE_PUBLISHABLE_KEY" ]; then
+            echo "::error::Set the SUPABASE_URL and SUPABASE_PUBLISHABLE_KEY repository variables before deploying."
+            exit 1
+          fi
       - name: Configure Pages
         if: github.event_name != 'pull_request'
         id: pages

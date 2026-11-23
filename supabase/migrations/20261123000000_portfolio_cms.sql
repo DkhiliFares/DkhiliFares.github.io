@@ -74,7 +74,4 @@ insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_typ
 values
   ('portfolio-media-private', 'portfolio-media-private', false, 10485760, array['image/png','image/jpeg','image/webp']),
   ('portfolio-media-public', 'portfolio-media-public', true, 10485760, array['image/png','image/jpeg','image/webp'])
-on conflict (id) do update set
-  public = excluded.public,
-  file_size_limit = excluded.file_size_limit,
-  allowed_mime_types = excluded.allowed_mime_types;
+on conflict (id) do nothing;

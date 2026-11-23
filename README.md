@@ -41,15 +41,9 @@ No `npm install` is necessary. Fonts and their licenses are local. Generated out
 | `src/styles/` | Tokens and responsive visual system |
 | `src/scripts/` | Progressive enhancement, filtering, skill map and field engine |
 | `public/` | Favicon, fonts and reviewed media |
-| `docs/repository-inventory.json` | Full internal audit of all 26 public repositories |
-| `docs/github-audit.md` | Audit decisions and evidence limitations |
-| `docs/redesign-brief.md` | Design and architecture proposal written before implementation |
+Only reviewed records marked `visibility: "published"` enter the generated site. Unverified completion is represented explicitly rather than inferred from repository names, README claims, code presence or push dates. Draft records and internal review material are excluded from the public build.
 
-The audit was performed on 21 November 2026. GitHub had 26 public repositories at that time, rather than the expected 25. The searchable archive contains 25 records. `testcorempro` is excluded pending confidentiality review. `cutiePI` is a draft and is absent from the generated site. Network Administration appears as a reference with completion unconfirmed, not as a completed case study.
-
-No repository is inferred complete from its name, README marketing language, code presence or push date. `status: "unverified"` extends the original spec's status set to express uncertainty honestly. Published prototype and exercise studies are useful even when completion has not been established. Full audit JSON and draft records are never copied into `dist/`.
-
-The supplied original CV is excluded from Git and the public build because it contains restricted internship details. The downloadable PDF and printable CV are generated from the approved public data. They are intentionally a sanitized professional summary. Do not copy the original CV into `public/`.
+The downloadable PDF and printable CV are generated from approved public data. Publish only material explicitly cleared for the site; do not copy private source documents into `public/`.
 
 ## Add or update content
 
@@ -85,6 +79,8 @@ Visit `http://127.0.0.1:4173/__qa__/`. This local-only harness loads actual page
 
 The workflow in `.github/workflows/deploy.yml` builds and tests on pull requests. Pushes to `main` and manual runs upload only `dist/` and deploy through GitHub Pages. Set the repository's Pages source to **GitHub Actions**.
 
+Before running the workflow, configure the GitHub Actions repository variables `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY`. They are public client configuration, not service credentials; never put a Supabase service-role key in the workflow or public build. The workflow stops if either variable is missing so it cannot deploy a site with a silently disabled contact form or dashboard. `CONTACT_API_URL` may override the default message-function URL, and `TURNSTILE_SITE_KEY` is optional when server-side rate limiting is configured.
+
 The workflow detects user/organization sites versus project sites and sets `BASE_PATH`. Links and local assets are relative, so the same site works at `/` or `/<repository>/`. To generate canonical URLs, sitemap and robots metadata locally:
 
 ```powershell
@@ -93,11 +89,6 @@ $env:BASE_PATH = '/engineering-portfolio/'
 npm.cmd run build
 ```
 
-For the `DkhiliFares.github.io` repository itself, use `/` as the base path. Do not use an example hostname as a production canonical URL. No Git remote is connected in this workspace and no deployment has been performed. The local subpath tests are not a substitute for a successful GitHub Actions deployment.
+For the `DkhiliFares.github.io` repository itself, use `/` as the base path. Do not use an example hostname as a production canonical URL. The local subpath tests are not a substitute for a successful GitHub Actions deployment.
 
-## Original prototype
-
-The earlier three-file version was backed up under the ignored `.research/previous-prototype/` directory before replacement. Research downloads and development fixtures are also ignored and excluded from deployment.
-=======
-# DkhiliFares.github.io
-Personal engineering portfolio
+Research downloads and development fixtures are excluded from deployment.

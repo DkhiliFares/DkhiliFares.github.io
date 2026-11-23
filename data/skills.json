@@ -48,7 +48,7 @@
       "gprs-driver"
     ],
     "experience": [],
-    "evidenceNote": "Supported by project code or documented integration; project limitations still apply."
+    "evidenceNote": ""
   },
   {
     "id": "embedded-5",
@@ -164,7 +164,7 @@
     "experience": [
       "vicom-2024"
     ],
-    "evidenceNote": "Supported by project code or documented integration; project limitations still apply."
+    "evidenceNote": ""
   },
   {
     "id": "linux-7",
@@ -177,7 +177,7 @@
     "experience": [
       "vicom-2024"
     ],
-    "evidenceNote": "Supported by project code or documented integration; project limitations still apply."
+    "evidenceNote": ""
   },
   {
     "id": "linux-8",
@@ -291,7 +291,7 @@
     "experience": [
       "vicom-2024"
     ],
-    "evidenceNote": "Supported by project code or documented integration; project limitations still apply."
+    "evidenceNote": ""
   },
   {
     "id": "iot-2",
@@ -313,7 +313,7 @@
       "firedetection-esp32"
     ],
     "experience": [],
-    "evidenceNote": "Supported by project code or documented integration; project limitations still apply."
+    "evidenceNote": ""
   },
   {
     "id": "iot-4",
@@ -324,7 +324,7 @@
       "azurelorahub"
     ],
     "experience": [],
-    "evidenceNote": "Supported by project code or documented integration; project limitations still apply."
+    "evidenceNote": ""
   },
   {
     "id": "iot-5",
@@ -336,7 +336,7 @@
       "raspberry-pi-monitoring"
     ],
     "experience": [],
-    "evidenceNote": "Supported by project code or documented integration; project limitations still apply."
+    "evidenceNote": ""
   },
   {
     "id": "iot-6",
@@ -347,7 +347,7 @@
       "azurelorahub"
     ],
     "experience": [],
-    "evidenceNote": "Supported by project code or documented integration; project limitations still apply."
+    "evidenceNote": ""
   },
   {
     "id": "iot-7",
@@ -358,7 +358,7 @@
       "gprs-driver"
     ],
     "experience": [],
-    "evidenceNote": "Supported by project code or documented integration; project limitations still apply."
+    "evidenceNote": ""
   },
   {
     "id": "iot-8",
@@ -369,7 +369,7 @@
       "raspberry-pi-monitoring"
     ],
     "experience": [],
-    "evidenceNote": "Supported by project code or documented integration; project limitations still apply."
+    "evidenceNote": ""
   },
   {
     "id": "hardware-1",
@@ -450,7 +450,7 @@
       "big-data-energy-monitoring"
     ],
     "experience": [],
-    "evidenceNote": "Supported by project code or documented integration; project limitations still apply."
+    "evidenceNote": ""
   },
   {
     "id": "software-3",
@@ -484,7 +484,7 @@
       "secureaccess"
     ],
     "experience": [],
-    "evidenceNote": "Supported by project code or documented integration; project limitations still apply."
+    "evidenceNote": ""
   },
   {
     "id": "software-6",
@@ -496,7 +496,7 @@
       "cloud-3tiers-architecture"
     ],
     "experience": [],
-    "evidenceNote": "Supported by project code or documented integration; project limitations still apply."
+    "evidenceNote": ""
   },
   {
     "id": "software-7",
@@ -508,7 +508,7 @@
       "secureaccess"
     ],
     "experience": [],
-    "evidenceNote": "Supported by project code or documented integration; project limitations still apply."
+    "evidenceNote": ""
   },
   {
     "id": "software-8",
@@ -541,7 +541,7 @@
       "azurelorahub"
     ],
     "experience": [],
-    "evidenceNote": "Supported by project code or documented integration; project limitations still apply."
+    "evidenceNote": ""
   },
   {
     "id": "cloud-2",
@@ -564,7 +564,7 @@
       "big-data-energy-monitoring"
     ],
     "experience": [],
-    "evidenceNote": "Supported by project code or documented integration; project limitations still apply."
+    "evidenceNote": ""
   },
   {
     "id": "cloud-4",
@@ -575,7 +575,7 @@
       "azurelorahub"
     ],
     "experience": [],
-    "evidenceNote": "Supported by project code or documented integration; project limitations still apply."
+    "evidenceNote": ""
   },
   {
     "id": "cloud-5",
@@ -630,7 +630,7 @@
       "secureaccess"
     ],
     "experience": [],
-    "evidenceNote": "Supported by project code or documented integration; project limitations still apply."
+    "evidenceNote": ""
   },
   {
     "id": "security-ai-2",
@@ -641,7 +641,7 @@
       "secureaccess"
     ],
     "experience": [],
-    "evidenceNote": "Supported by project code or documented integration; project limitations still apply."
+    "evidenceNote": ""
   },
   {
     "id": "security-ai-3",

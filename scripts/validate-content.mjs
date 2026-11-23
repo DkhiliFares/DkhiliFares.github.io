@@ -65,7 +65,7 @@ export async function validateContent(data) {
   for (const s of data.skills) {
     if (!categories.has(s.category)) fail(`${s.id}: invalid category`);
     if (!['project','internship','academic','training','cv','developing','documented'].includes(s.evidenceType)) fail(`${s.id}: invalid evidence type`);
-    if (!s.evidenceNote) fail(`${s.id}: evidence note required`);
+    if (s.evidenceNote !== undefined && (typeof s.evidenceNote !== 'string' || s.evidenceNote.length > 2000)) fail(`${s.id}: invalid evidence note`);
     for (const id of s.projects||[]) if (!projects.has(id) || projects.get(id).visibility!=='published') fail(`${s.id}: invalid or unpublished project ${id}`);
     for (const id of s.experience||[]) if (!experience.has(id)) fail(`${s.id}: invalid experience ${id}`);
   }

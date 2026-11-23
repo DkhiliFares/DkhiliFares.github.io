@@ -1,3 +1,16 @@
+export async function submitContactMessage(endpoint, payload, fetchImpl = fetch, signal) {
+  const response = await fetchImpl(endpoint, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify(payload),
+    signal
+  });
+  let result = null;
+  try { result = await response.json(); } catch {}
+  if (!response.ok || result?.ok !== true) throw new Error(result?.error || 'The message could not be saved.');
+  return result;
+}
+
 export function initContact() {
   const form = document.querySelector('#contact-form');
   if (!form) return;
@@ -7,7 +20,8 @@ export function initContact() {
     event.preventDefault();
     if (!form.reportValidity() || button.disabled) return;
     const data = new FormData(form);
-    if (!data.get('cf-turnstile-response')) {
+    const turnstileToken = data.get('cf-turnstile-response');
+    if (form.dataset.turnstile === 'required' && !turnstileToken) {
       status.textContent = 'Complete the security check before sending.';
       status.dataset.state = 'error';
       return;
@@ -18,20 +32,25 @@ export function initContact() {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 20000);
     try {
-      const response = await fetch(form.dataset.endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ subject: data.get('subject'), email: data.get('email'), message: data.get('message'), website: data.get('website'), turnstileToken: data.get('cf-turnstile-response') }),
-        signal: controller.signal
-      });
-      if (!response.ok) throw new Error(`Delivery returned ${response.status}`);
+      await submitContactMessage(form.dataset.endpoint, {
+        name: String(data.get('name') || '').trim(),
+        subject: String(data.get('subject') || '').trim(),
+        email: String(data.get('email') || '').trim(),
+        message: String(data.get('message') || '').trim(),
+        website: data.get('website'),
+        turnstileToken
+      }, fetch, controller.signal);
       form.reset();
       window.turnstile?.reset();
       status.dataset.state = 'success';
       status.textContent = 'Message saved in my private inbox. Thank you — I’ll reply by email.';
-    } catch {
+    } catch (error) {
       status.dataset.state = 'error';
-      status.textContent = 'The message could not be sent. Please try again or use the email link.';
+      status.textContent = error?.name === 'AbortError'
+        ? 'The request timed out. Please try again.'
+        : error instanceof Error && error.message !== 'Failed to fetch'
+          ? error.message
+          : 'The message could not be sent. Check your connection and try again.';
     } finally {
       clearTimeout(timer);
       button.disabled = false;

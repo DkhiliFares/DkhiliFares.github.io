@@ -1,8 +1,8 @@
-export function corsHeaders(origin, allowed) {
+export function corsHeaders(origin, allowed, methods = 'GET, POST, OPTIONS', headers = 'authorization, apikey, content-type') {
   return origin === allowed ? {
     'Access-Control-Allow-Origin': allowed,
-    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'authorization, apikey, content-type',
+    'Access-Control-Allow-Methods': methods,
+    'Access-Control-Allow-Headers': headers,
     Vary: 'Origin'
   } : { Vary: 'Origin' };
 }

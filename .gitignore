@@ -12,9 +12,12 @@ Fares Dkhili.pdf
 /docs/redesign-brief.md
 /docs/repository-inventory.json
 /docs/portfolio-1-1-setup.md
+/docs/PORTFOLIO_1_1_SUPABASE_SETUP.md
+/supabase/.temp/
 
 # Dashboard build artifacts
 /owner-dashboard/build/
+/owner-dashboard/src/public-baseline.generated.ts
 
 # Environment and secrets
 .env
