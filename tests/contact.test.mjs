@@ -1,4 +1,5 @@
-
+import test from 'node:test';
+import assert from 'node:assert/strict';
 test('submission endpoint enforces origin, HTTP method and optional Turnstile verification', async () => {
   const { db, state } = mockDatabase();
   const handler = makeHandler(createSubmitMessageHandler, { db, state });
