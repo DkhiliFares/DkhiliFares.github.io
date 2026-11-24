@@ -34,6 +34,39 @@ If local containers cannot be approved, request an isolated non-production Supab
 | Public build/export | Serializer tests call the existing `validateContent` validator | Validate generated candidate files and assets in the publication pull request |
 
 These are not production checks. No hosted migration, Edge Function, Auth, RLS, or Storage operation is authorized by this document.
+The pgTAP ordering assertions exercise stale snapshots sequentially; they are not a two-session concurrency test.
+
+## Database migration safety notes
+
+The additive `20261124010000_portfolio_cms_integrity.sql` migration validates existing media bucket settings and fails instead of changing them. Required configuration:
+
+| Bucket | Public | Size limit | Allowed MIME types |
+|---|---:|---:|---|
+| `portfolio-media-private` | `false` | 10 MiB | PNG, JPEG, WebP |
+| `portfolio-media-public` | `true` | 10 MiB | PNG, JPEG, WebP |
+
+Before applying migrations, inspect the existing bucket configuration and Storage policies using a read-only SQL session:
+
+```sql
+select id, name, public, file_size_limit, allowed_mime_types
+from storage.buckets
+where id in ('portfolio-media-private', 'portfolio-media-public');
+
+select policyname, roles, cmd, qual, with_check
+from pg_policies
+where schemaname = 'storage' and tablename = 'objects';
+
+select bucket_id, count(*) as object_count
+from storage.objects
+where bucket_id in ('portfolio-media-private', 'portfolio-media-public')
+group by bucket_id;
+```
+
+If the private bucket is public or either bucket has a different limit or MIME allowlist, stop. Review object inventory, access policies, and callers before manually reconciling; do not blindly flip visibility or replace settings because existing public assets may depend on them. The migration performs no bucket updates. Its validation function raises an error on drift and is not executable by application roles.
+
+The migration also replaces version-ID-only foreign keys with deferred composite foreign keys, ensuring a CMS record's draft and published versions belong to that same record. It aborts if existing pointers are inconsistent rather than repairing them silently.
+
+CMS versions and audit events now revoke application-role `UPDATE`, `DELETE`, and `TRUNCATE`; statement-level triggers also reject truncation. These protections do not make history tamper-proof against the database owner or a superuser, who can alter privileges or disable triggers. `portfolio_alert_slots` is operational notification-deduplication data, not a message/audit log: entries older than 90 days are lazily removed on a subsequent insert. The interval preserves a useful troubleshooting window while old slots cannot affect the current 15-minute alert deduplication window.
 
 ## Ordering contract
 

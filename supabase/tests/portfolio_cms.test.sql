@@ -1,6 +1,6 @@
 begin;
 
-select plan(39);
+select plan(49);
 
 select ok(
   (
@@ -49,6 +49,43 @@ select ok(
     and exists (select 1 from storage.buckets where id = 'portfolio-media-public' and public = true),
   'private and public media buckets have distinct visibility'
 );
+update storage.buckets set public = true where id = 'portfolio-media-private';
+select throws_ok(
+  'select public.assert_portfolio_media_bucket_configuration()',
+  '23514',
+  'Unsafe configuration for portfolio-media-private',
+  'bucket validation rejects a publicly exposed private bucket'
+);
+update storage.buckets set public = false where id = 'portfolio-media-private';
+update storage.buckets set file_size_limit = 20971520 where id = 'portfolio-media-private';
+select throws_ok(
+  'select public.assert_portfolio_media_bucket_configuration()',
+  '23514',
+  'Unsafe configuration for portfolio-media-private',
+  'bucket validation rejects a weaker private bucket size limit'
+);
+update storage.buckets set file_size_limit = 10485760 where id = 'portfolio-media-private';
+select ok(
+  exists (
+    select 1 from storage.buckets
+      where id = 'portfolio-media-private'
+        and public = false
+        and file_size_limit = 10485760
+        and cardinality(allowed_mime_types) = 3
+        and allowed_mime_types @> array['image/png','image/jpeg','image/webp']
+        and array['image/png','image/jpeg','image/webp'] @> allowed_mime_types
+  )
+    and exists (
+    select 1 from storage.buckets
+      where id = 'portfolio-media-public'
+        and public = true
+        and file_size_limit = 10485760
+        and cardinality(allowed_mime_types) = 3
+        and allowed_mime_types @> array['image/png','image/jpeg','image/webp']
+        and array['image/png','image/jpeg','image/webp'] @> allowed_mime_types
+  ),
+  'both media buckets have the required visibility, size limit, and MIME allowlist'
+);
 select ok(
   not exists (
     select 1
@@ -59,6 +96,45 @@ select ok(
         and cmd in ('SELECT','ALL')
   ),
   'storage has no anonymous or authenticated object-read policy'
+);
+select ok(
+  not exists (
+    select 1
+      from pg_policies
+      where schemaname = 'storage'
+        and tablename = 'objects'
+        and roles && array['anon'::name,'authenticated'::name,'public'::name]
+        and cmd in ('INSERT','UPDATE','DELETE','ALL')
+  ),
+  'storage has no anonymous or authenticated object-write policy'
+);
+select ok(
+  not has_table_privilege('anon', 'public.cms_record_versions', 'update')
+    and not has_table_privilege('authenticated', 'public.cms_record_versions', 'update')
+    and not has_table_privilege('service_role', 'public.cms_record_versions', 'update')
+    and not has_table_privilege('anon', 'public.cms_record_versions', 'delete')
+    and not has_table_privilege('authenticated', 'public.cms_record_versions', 'delete')
+    and not has_table_privilege('service_role', 'public.cms_record_versions', 'delete')
+    and not has_table_privilege('anon', 'public.cms_record_versions', 'truncate')
+    and not has_table_privilege('authenticated', 'public.cms_record_versions', 'truncate')
+    and not has_table_privilege('service_role', 'public.cms_record_versions', 'truncate')
+    and not has_table_privilege('anon', 'public.cms_audit_events', 'update')
+    and not has_table_privilege('authenticated', 'public.cms_audit_events', 'update')
+    and not has_table_privilege('service_role', 'public.cms_audit_events', 'update')
+    and not has_table_privilege('anon', 'public.cms_audit_events', 'delete')
+    and not has_table_privilege('authenticated', 'public.cms_audit_events', 'delete')
+    and not has_table_privilege('service_role', 'public.cms_audit_events', 'delete')
+    and not has_table_privilege('anon', 'public.cms_audit_events', 'truncate')
+    and not has_table_privilege('authenticated', 'public.cms_audit_events', 'truncate')
+    and not has_table_privilege('service_role', 'public.cms_audit_events', 'truncate'),
+  'application roles cannot update, delete, or truncate immutable CMS history'
+);
+select ok(
+  (select count(*) = 2
+     from pg_trigger
+     where not tgisinternal
+       and tgname in ('cms_record_versions_no_truncate','cms_audit_events_no_truncate')),
+  'statement-level truncate guards exist on both immutable history tables'
 );
 
 select throws_ok(
@@ -169,6 +245,30 @@ select is(
   (select collection_order from public.cms_records where record_type = 'project' and record_key = 'project-new'),
   2,
   'a new record is appended deterministically'
+);
+select throws_ok(
+  $$
+    update public.cms_records target
+      set draft_version_id = source.draft_version_id
+      from public.cms_records source
+      where target.id = (select first_project_id from cms_order_test_context)
+        and source.id = (select second_project_id from cms_order_test_context)
+  $$,
+  '23503',
+  'insert or update on table "cms_records" violates foreign key constraint "cms_records_draft_version_same_record_fk"',
+  'a draft version belonging to another record is rejected'
+);
+select throws_ok(
+  $$
+    update public.cms_records target
+      set published_version_id = source.published_version_id
+      from public.cms_records source
+      where target.id = (select first_project_id from cms_order_test_context)
+        and source.id = (select second_project_id from cms_order_test_context)
+  $$,
+  '23503',
+  'insert or update on table "cms_records" violates foreign key constraint "cms_records_published_version_same_record_fk"',
+  'a published version belonging to another record is rejected'
 );
 select lives_ok(
   $$
@@ -512,6 +612,31 @@ select throws_ok(
   'P0001',
   'CMS history is immutable',
   'audit events cannot be deleted'
+);
+select throws_ok(
+  'truncate table public.cms_audit_events',
+  'P0001',
+  'CMS history is immutable',
+  'audit history cannot be truncated'
+);
+insert into public.portfolio_alert_slots (slot, created_at)
+  values (now() - interval '91 days', now() - interval '91 days')
+  on conflict (slot) do update set created_at = excluded.created_at;
+insert into public.portfolio_alert_slots (slot, created_at)
+  values (now() - interval '89 days', now())
+  on conflict (slot) do update set created_at = excluded.created_at;
+insert into public.portfolio_alert_slots (slot, created_at)
+  values (now() + interval '1 day', now());
+select ok(
+  not exists (
+    select 1 from public.portfolio_alert_slots
+      where slot = now() - interval '91 days'
+  )
+    and exists (
+      select 1 from public.portfolio_alert_slots
+        where slot = now() - interval '89 days'
+    ),
+  'alert slot retention prunes records older than 90 days and retains newer slots'
 );
 
 select * from finish();

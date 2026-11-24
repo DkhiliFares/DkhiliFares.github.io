@@ -80,8 +80,12 @@ export function createSubmitMessageHandler({
   const origins = allowedOrigins(getEnv);
 
   return async request => {
-    const { allowed, headers } = requestContext(request, origins, 'POST, OPTIONS', 'content-type');
-    if (request.method === 'OPTIONS') return new Response(null, { status: allowed ? 204 : 403, headers });
+const { allowed, headers } = requestContext(
+  request,
+  origins,
+  'POST, OPTIONS',
+  'authorization, x-client-info, apikey, content-type'
+);    if (request.method === 'OPTIONS') return new Response(null, { status: allowed ? 204 : 403, headers });
     if (!allowed) return json({ error: 'Forbidden.' }, 403, headers);
     if (request.method !== 'POST') return json({ error: 'Method not allowed.', code: 'METHOD_NOT_ALLOWED' }, 405, { ...headers, Allow: 'POST, OPTIONS' });
 
