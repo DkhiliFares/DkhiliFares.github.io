@@ -1,6 +1,6 @@
 begin;
 
-select plan(49);
+select plan(51);
 
 select ok(
   (
@@ -65,6 +65,17 @@ select throws_ok(
   'bucket validation rejects a weaker private bucket size limit'
 );
 update storage.buckets set file_size_limit = 10485760 where id = 'portfolio-media-private';
+
+update storage.buckets set public = false where id = 'portfolio-media-public';
+
+select throws_ok(
+  'select public.assert_portfolio_media_bucket_configuration()',
+  '23514',
+  'Unsafe configuration for portfolio-media-public',
+  'bucket validation rejects an incorrectly private public bucket'
+);
+
+update storage.buckets set public = true where id = 'portfolio-media-public';
 select ok(
   exists (
     select 1 from storage.buckets
@@ -618,6 +629,13 @@ select throws_ok(
   'P0001',
   'CMS history is immutable',
   'audit history cannot be truncated'
+);
+
+select throws_ok(
+  'truncate table public.cms_record_versions',
+  'P0001',
+  'CMS history is immutable',
+  'version history cannot be truncated'
 );
 insert into public.portfolio_alert_slots (slot, created_at)
   values (now() - interval '91 days', now() - interval '91 days')
