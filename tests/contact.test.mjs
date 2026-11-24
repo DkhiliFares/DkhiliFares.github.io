@@ -191,7 +191,10 @@ test('submission endpoint enforces origin, HTTP method and optional Turnstile ve
   }));
   assert.equal(preflight.status, 204);
   assert.equal(preflight.headers.get('Access-Control-Allow-Methods'), 'POST, OPTIONS');
-  assert.equal(preflight.headers.get('Access-Control-Allow-Headers'), 'content-type');
+  assert.equal(
+  response.headers.get('Access-Control-Allow-Headers'),
+  'authorization, x-client-info, apikey, content-type'
+);
   const unsupportedType = await handler(new Request('https://project.supabase.co/functions/v1/submit-message', {
     method: 'POST',
     headers: { Origin: origin, 'Content-Type': 'text/plain', 'x-real-ip': '203.0.113.12' },
